@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* The display face is multi-weight, so `font-display` on its own would
+   render at 400 — far too light for a headline. This gives it a heavy
+   default. It lives in the components layer specifically so that any
+   explicit weight utility (`font-semibold` on the smaller sub-headings,
+   for instance) still wins, since Tailwind emits utilities after
+   components. Condensed uppercase set large needs a hair of negative
+   tracking to keep the counters from looking gappy. */
+@layer components {
+  .font-display {
+    font-weight: 800;
+    letter-spacing: -0.005em;
+  }
+}
+
+@layer base {
+  ::selection {
+    background-color: #00b8ff;
+    color: #0b1014;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 60s linear infinite;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.no-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* old Edge/IE */
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome/Safari — the sliding progress bar replaces it visually */
+}
