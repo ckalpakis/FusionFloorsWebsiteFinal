@@ -308,6 +308,19 @@ export const siteConfig = {
     },
   ],
 
+  flakeColorSprite: "/images/flake-color-catalogue.jpg",
+  flakeColors: [
+    { name: "Domino", column: 0, row: 0 },
+    { name: "Tidal Wave", column: 1, row: 0 },
+    { name: "Gravel", column: 2, row: 0 },
+    { name: "Creekbed", column: 0, row: 1 },
+    { name: "Outback", column: 1, row: 1 },
+    { name: "Shoreline", column: 2, row: 1 },
+    { name: "Wombat", column: 0, row: 2 },
+    { name: "Orbit", column: 1, row: 2 },
+    { name: "Nightfall", column: 2, row: 2 },
+  ],
+
   // Sparta is confirmed as their actual base. The four towns after it are
   // the obvious local-SEO targets around it — all inside the "Western
   // Wisconsin" radius the business already advertises, all along the I-90

@@ -6,6 +6,7 @@ import JsonLd from "@/components/JsonLd";
 import MidPageCTA from "@/components/MidPageCTA";
 import StickyMobileCTA from "@/components/StickyMobileCTA";
 import QuoteForm from "@/components/QuoteForm";
+import ColorCatalogue from "@/components/ColorCatalogue";
 import { siteConfig } from "@/config/site.config";
 import { serviceLocationSchema, breadcrumbSchema, faqSchema } from "@/lib/schema";
 import { serviceAlt } from "@/lib/seo";
@@ -193,6 +194,8 @@ export default async function ServiceLocationPage({
           </div>
         )}
       </section>
+
+      <ColorCatalogue />
 
       {(service.signsYouNeedThis.length > 0 || service.costFactors.length > 0) && (
         <section className="bg-ink text-paper px-6 py-16">

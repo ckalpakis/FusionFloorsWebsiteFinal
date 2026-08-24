@@ -6,6 +6,7 @@ import JsonLd from "@/components/JsonLd";
 import MidPageCTA from "@/components/MidPageCTA";
 import StickyMobileCTA from "@/components/StickyMobileCTA";
 import QuoteForm from "@/components/QuoteForm";
+import ColorCatalogue from "@/components/ColorCatalogue";
 import { siteConfig } from "@/config/site.config";
 import { serviceSchema, breadcrumbSchema, faqSchema } from "@/lib/schema";
 import { serviceAlt } from "@/lib/seo";
@@ -153,6 +154,8 @@ export default async function ServicePage({
           </div>
         )}
       </section>
+
+      <ColorCatalogue />
 
       {/* Signs you need this + cost factors — dark two-column block,
           breaking up the page rhythm the same way the homepage

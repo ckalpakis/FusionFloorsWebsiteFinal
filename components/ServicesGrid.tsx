@@ -32,12 +32,13 @@ export default function ServicesGrid({
               href={`/services/${s.slug}`}
               className="group relative bg-ink p-8 hover:bg-surface transition-colors"
             >
-              <div className="relative h-40 w-full overflow-hidden rounded mb-4">
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded mb-5 bg-paper/5">
                 <Image
                   src={s.imageSrc}
                   alt={serviceAlt(s)}
                   fill
-                  className="object-cover group-hover:scale-105 transition-transform"
+                  sizes="(min-width: 768px) 50vw, 100vw"
+                  className="object-cover transition-[filter] duration-300 group-hover:brightness-110"
                 />
               </div>
               {/* Numbered the same way the gallery captions are labelled —
