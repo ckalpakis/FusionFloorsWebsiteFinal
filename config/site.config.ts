@@ -37,7 +37,7 @@ export const siteConfig = {
     name: "Fusion Floors",
     legalName: "Fusion Floors LLC",
     tagline:
-      "Here at Fusion Floors we offer the best residential, garage, and commercial epoxy flooring installation across all of Western Wisconsin.",
+      "Professional garage, basement, patio, outdoor, and commercial concrete coatings across Western Wisconsin.",
     phone: "(608) 633-4920",
     phoneHref: "tel:+16086334920",
     email: "fusionfloorsff@gmail.com",
@@ -63,13 +63,13 @@ export const siteConfig = {
     posterSrc: "/images/hero-poster-optimized.jpg",
     headline: "Epoxy Flooring Installation in Sparta, Wisconsin.",
     subhead:
-      "Garage, basement, and commercial epoxy coatings across Western Wisconsin. Free estimates.",
+      "Garage, basement, patio, outdoor, and commercial concrete coatings across Western Wisconsin. Free estimates.",
     ctaPrimary: { label: "Get a Free Estimate", href: "/contact" },
     badges: ["Free Estimates", "Western WI", "Sparta Based"],
     marqueeItems: [
       "Garage Floor Epoxy",
       "Basement Epoxy",
-      "Decorative Flake",
+      "Patio & Outdoor Coatings",
       "Commercial Coatings",
     ],
   },
@@ -78,8 +78,8 @@ export const siteConfig = {
     eyebrow: "About",
     heading: "Epoxy flooring, done right, in Sparta.",
     body: [
-      "Fusion Floors installs epoxy flooring systems for garages, basements, and commercial spaces across Western Wisconsin, based out of Sparta.",
-      "Every job starts with a real conversation about what you want the space to do — park cars, store gear, run a business — and a floor system built for that use, not a one-size-fits-all coating. We handle surface prep, repair, and installation ourselves from start to finish, so there's one crew accountable for the whole job.",
+      "Fusion Floors installs concrete coating systems for garages, basements, patios, outdoor living spaces, and commercial properties across Western Wisconsin, based out of Sparta.",
+      "Every job starts with a real conversation about what you want the space to do — park cars, host family outdoors, or run a business — and a coating system built for that use, not a one-size-fits-all product. We handle surface prep, repair, and installation ourselves from start to finish, so there's one crew accountable for the whole job.",
     ],
     stats: [
       { value: "2-3", label: "Local Crew" },
@@ -247,51 +247,60 @@ export const siteConfig = {
       imageSrc: "/images/service-commercial-epoxy.jpg",
     },
     {
-      id: "decorative-flake-metallic",
-      slug: "decorative-flake-metallic",
+      id: "patio-outdoor-coatings",
+      slug: "patio-outdoor-coatings",
       number: "04",
-      title: "Decorative Flake & Metallic Epoxy",
-      h1: "Decorative Flake & Metallic Epoxy in Sparta, WI",
+      title: "Patio & Outdoor Coatings",
+      h1: "Patio & Outdoor Coatings in Sparta, WI",
       shortDescription:
-        "Flake and metallic finish epoxy for a custom, high-end floor look.",
+        "Durable, slip-resistant concrete coatings for patios, walkways, steps, and outdoor living spaces.",
       metaDescription:
-        "Decorative flake and metallic epoxy flooring in Sparta, WI from Fusion Floors. Free estimates.",
+        "Patio and outdoor concrete coatings in Sparta, WI. Durable finishes for patios, walkways, and steps from Fusion Floors. Free estimates.",
       description: [
-        "Solid color is clean and affordable; flake hides dirt and tire marks better and gives a textured, showroom look; metallic is the most custom option, with pigments that move and pool for a marbled, one-of-a-kind finish. Which one's right depends more on how the space gets used day to day than which looks best in a photo — we'll walk you through the tradeoffs before you pick.",
+        "Patios, walkways, and exterior steps have to handle sun, rain, snow, freeze-thaw cycles, and the grit that comes with a Wisconsin winter. We install outdoor concrete coating systems selected for exterior exposure, traction, and the way you use the space.",
+        "A properly prepared and coated surface is easier to clean, more comfortable to live with, and gives worn concrete a finished look. We assess the slab, repair damage where appropriate, and help you choose a texture and color that work with your home and outdoor space.",
       ],
       process: [
         {
-          step: "Color/finish selection",
-          detail: "Choose solid color, flake blend, or metallic pattern.",
+          step: "Outdoor assessment",
+          detail: "We inspect the concrete, drainage, exposure, cracks, and existing coatings before recommending a system.",
         },
         {
-          step: "Base + broadcast",
-          detail: "Base coat applied, flake or metallic pigment introduced.",
+          step: "Surface prep & repair",
+          detail: "The surface is mechanically prepared and suitable cracks or damaged areas are repaired for reliable adhesion.",
         },
         {
-          step: "Topcoat",
-          detail: "Clear protective topcoat seals and adds gloss.",
+          step: "Coating & texture",
+          detail: "An exterior-suitable coating system is applied with the selected color and slip-resistant texture.",
+        },
+        {
+          step: "Final cure",
+          detail: "The coating cures before the patio, walkway, or steps return to normal use.",
         },
       ],
       costFactors: [
-        "Finish complexity (solid vs. flake vs. metallic)",
         "Square footage",
+        "Condition of the concrete and repairs needed",
+        "Surface layout, steps, edges, and existing coating removal",
+        "Selected color, texture, and coating system",
       ],
       signsYouNeedThis: [
-        "Want a decorative, showroom-style floor rather than a plain solid color",
+        "Worn, stained, or hard-to-clean patio concrete",
+        "Peeling paint or a failed coating on an outdoor surface",
+        "An outdoor living area that needs a more finished, slip-resistant surface",
       ],
-      recentProject: {
-        title: "Full metallic garage floor, Sparta",
-        detail:
-          "Installed a black-and-gold metallic epoxy system in a heated garage — the homeowner wanted something that didn't look like every other gray flake floor on the block, and metallic gives a different result every time since the pattern isn't repeatable.",
-      } as RecentProject | null,
+      recentProject: null as RecentProject | null,
       faq: [
         {
-          q: "Does solid color or flake look better?",
-          a: "Flake generally hides everyday dirt, dust, and minor scuffs better than solid color, which shows every mark. If you want the lowest-maintenance look day to day, flake wins; if you want the cleanest, most modern look and don't mind more frequent sweeping, solid color is the move.",
+          q: "Can concrete coatings be used outdoors in Wisconsin?",
+          a: "Yes, when the coating system is selected for exterior exposure and the concrete is prepared correctly. We assess sun, moisture, drainage, and freeze-thaw conditions before recommending a system for your patio or walkway.",
+        },
+        {
+          q: "Will an outdoor coating be slippery when wet?",
+          a: "Outdoor surfaces can be finished with added texture for better traction. We'll recommend a slip-resistant finish based on whether the area is a patio, walkway, or set of steps.",
         },
       ],
-      imageSrc: "/images/service-flake-metallic.jpg",
+      imageSrc: "/images/work-four.jpg",
     },
   ],
 
@@ -324,9 +333,9 @@ export const siteConfig = {
       state: "WI",
       h1: "Epoxy Flooring in Sparta, WI",
       metaDescription:
-        "Fusion Floors installs epoxy flooring in Sparta, WI — garage, basement, and commercial coatings. Free estimates.",
+        "Fusion Floors installs garage, basement, patio, outdoor, and commercial concrete coatings in Sparta, WI. Free estimates.",
       blurb:
-        "Fusion Floors is based in Sparta and serves Western Wisconsin with epoxy flooring installation for garages, basements, and commercial spaces.",
+        "Fusion Floors is based in Sparta and serves Western Wisconsin with concrete coatings for garages, basements, patios, outdoor spaces, and commercial properties.",
       // Optional — falls back to the hero poster image if unset. Add a
       // real jobsite photo from Sparta specifically when you have one.
       imageSrc: undefined as string | undefined,
@@ -353,9 +362,9 @@ export const siteConfig = {
       state: "WI",
       h1: "Epoxy Flooring in La Crosse, WI",
       metaDescription:
-        "Epoxy flooring in La Crosse, WI — garage, basement, and commercial coatings from Fusion Floors. Free estimates, based 25 minutes away in Sparta.",
+        "Garage, basement, patio, outdoor, and commercial concrete coatings in La Crosse, WI from Fusion Floors. Free estimates.",
       blurb:
-        "Fusion Floors installs garage, basement, and commercial epoxy flooring throughout La Crosse — about a 25 minute drive west of our shop in Sparta, and the largest market we serve.",
+        "Fusion Floors installs coatings for garages, basements, patios, outdoor spaces, and commercial floors throughout La Crosse — about a 25 minute drive west of our shop in Sparta.",
       imageSrc: undefined as string | undefined,
       // Verify against the city's own neighborhood map before launch —
       // naming a neighborhood wrong is worse than not naming one at all.
@@ -381,9 +390,9 @@ export const siteConfig = {
       state: "WI",
       h1: "Epoxy Flooring in Onalaska, WI",
       metaDescription:
-        "Garage and basement epoxy flooring in Onalaska, WI. Flake, solid color, and metallic finishes from Fusion Floors. Free estimates.",
+        "Garage, basement, patio, and outdoor concrete coatings in Onalaska, WI from Fusion Floors. Free estimates.",
       blurb:
-        "Fusion Floors coats garage, basement, and commercial floors across Onalaska, roughly 20 minutes west of Sparta on I-90.",
+        "Fusion Floors coats garages, basements, patios, outdoor spaces, and commercial floors across Onalaska, roughly 20 minutes west of Sparta on I-90.",
       imageSrc: undefined as string | undefined,
       neighborhoods: [] as string[],
       localConditions: [
@@ -400,9 +409,9 @@ export const siteConfig = {
       state: "WI",
       h1: "Epoxy Flooring in Tomah, WI",
       metaDescription:
-        "Epoxy flooring in Tomah, WI — garage, shop, and commercial floor coatings from Fusion Floors in nearby Sparta. Free estimates.",
+        "Garage, patio, outdoor, shop, and commercial concrete coatings in Tomah, WI from Fusion Floors in nearby Sparta. Free estimates.",
       blurb:
-        "Fusion Floors installs epoxy flooring in Tomah — garages, shops, and commercial floors — about 15 minutes east of our base in Sparta.",
+        "Fusion Floors installs coatings in Tomah for garages, patios, outdoor spaces, shops, and commercial floors — about 15 minutes east of our base in Sparta.",
       imageSrc: undefined as string | undefined,
       neighborhoods: [] as string[],
       localConditions: [
@@ -419,9 +428,9 @@ export const siteConfig = {
       state: "WI",
       h1: "Epoxy Flooring in West Salem, WI",
       metaDescription:
-        "Epoxy flooring in West Salem, WI. Garage, basement, pole barn, and shop floor coatings from Fusion Floors. Free estimates.",
+        "Garage, basement, patio, outdoor, pole barn, and shop floor coatings in West Salem, WI from Fusion Floors. Free estimates.",
       blurb:
-        "Fusion Floors serves West Salem with epoxy flooring for garages, basements, shops, and outbuildings — a short drive west of Sparta on I-90.",
+        "Fusion Floors serves West Salem with coatings for garages, basements, patios, outdoor spaces, shops, and outbuildings — a short drive west of Sparta on I-90.",
       imageSrc: undefined as string | undefined,
       neighborhoods: [] as string[],
       localConditions: [
@@ -465,8 +474,8 @@ export const siteConfig = {
     },
     {
       imageSrc: "/images/work-two.jpg",
-      category: "Basement",
-      caption: "Solid gray finish, rec room",
+      category: "Outdoor",
+      caption: "Solid gray finish, walkway and stairs",
     },
     {
       imageSrc: "/images/work-three.jpg",
@@ -475,8 +484,8 @@ export const siteConfig = {
     },
     {
       imageSrc: "/images/work-four.jpg",
-      category: "Garage",
-      caption: "Two-car full tear-out and reinstall",
+      category: "Patio",
+      caption: "Outdoor Patio Tear-out and Reinstall",
     },
     {
       imageSrc: "/images/work-five.jpg",
@@ -491,12 +500,12 @@ export const siteConfig = {
     {
       imageSrc: "/images/work-seven.jpg",
       category: "Garage",
-      caption: "Black and gold metallic finish",
+      caption: "Black and white flake finish",
     },
     {
       imageSrc: "/images/work-eight.jpg",
-      category: "Basement",
-      caption: "Moisture-tested slab install",
+      category: "Garage",
+      caption: "Two-car garage full install",
     },
     {
       imageSrc: "/images/work-nine.jpg",
@@ -585,7 +594,7 @@ export const siteConfig = {
       "Garage Floor Epoxy",
       "Basement Floor Epoxy",
       "Commercial & Industrial Epoxy",
-      "Decorative Flake & Metallic Epoxy",
+      "Patio & Outdoor Coatings",
       "Other",
     ],
     sourceOptions: [

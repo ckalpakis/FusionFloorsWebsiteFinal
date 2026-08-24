@@ -45,7 +45,7 @@ const config: Config = {
         // Barlow Condensed — a condensed grotesk drawn from American
         // industrial/manufacturing signage. Condensed matters here for a
         // practical reason, not just a stylistic one: the local-SEO
-        // headlines are long ("Decorative Flake & Metallic Epoxy in
+        // headlines are long ("Patio & Outdoor Coatings in
         // Sparta, WI") and have to survive at text-6xl on one or two
         // lines.
         display: ["var(--font-display)"],
