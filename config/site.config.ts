@@ -135,7 +135,7 @@ export const siteConfig = {
         "Cracks or pitting in the slab",
       ],
       recentProject: {
-        title: "Two-car garage full flake system, Sparta",
+        title: "Two-car garage full flake system, Onalaska",
         detail:
           "Ground down an old peeling paint coating to bare concrete, repaired several cracks along the slab seams, and installed a full-broadcast flake system with a polyaspartic topcoat — done in a day and a half, ready for vehicle traffic within 48 hours.",
       } as RecentProject | null,
@@ -488,17 +488,17 @@ export const siteConfig = {
     {
       imageSrc: "/images/work-two.jpg",
       category: "Outdoor",
-      caption: "Solid gray finish, walkway and stairs",
+      caption: "Creekbed finish, walkway and stairs",
     },
     {
       imageSrc: "/images/work-three.jpg",
       category: "Flake",
-      caption: "Charcoal blend broadcast",
+      caption: "Domino blend broadcast",
     },
     {
       imageSrc: "/images/work-four.jpg",
       category: "Patio",
-      caption: "Outdoor Patio Tear-out and Reinstall",
+      caption: "Outdoor Patio with Loon Flake",
     },
     {
       imageSrc: "/images/work-five.jpg",
@@ -508,12 +508,12 @@ export const siteConfig = {
     {
       imageSrc: "/images/work-six.jpg",
       category: "Flake",
-      caption: "Earth-tone flake blend",
+      caption: "Opal flake blend",
     },
     {
       imageSrc: "/images/work-seven.jpg",
       category: "Garage",
-      caption: "Black and white flake finish",
+      caption: "Loon flake finish",
     },
     {
       imageSrc: "/images/work-eight.jpg",
