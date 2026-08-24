@@ -1,7 +1,6 @@
 "use client";
 
 import { useRef, useState } from "react";
-import Image from "next/image";
 import { siteConfig } from "@/config/site.config";
 
 type FieldVideo = (typeof siteConfig.fieldVideos)[number];
@@ -100,22 +99,12 @@ export default function VideoGallery() {
                     refs.current[i] = el;
                   }}
                   src={v.videoSrc}
-                  preload="none"
+                  preload="metadata"
                   muted
                   loop
                   playsInline
                   onPlay={() => setPlayingIndex(i)}
                   className="h-full w-full object-cover"
-                />
-
-                <Image
-                  src={v.posterSrc}
-                  alt=""
-                  fill
-                  sizes="(min-width: 768px) 25vw, 50vw"
-                  className={`pointer-events-none object-cover transition-opacity duration-200 ${
-                    playingIndex === i ? "opacity-0" : "opacity-100"
-                  }`}
                 />
 
                 {/* Play affordance — visible by default, fades once playing
