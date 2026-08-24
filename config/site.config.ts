@@ -483,7 +483,7 @@ export const siteConfig = {
     {
       imageSrc: "/images/work-one.jpg",
       category: "Garage",
-      caption: "Full flake system, Sparta",
+      caption: "Full flake system, Onalaska",
     },
     {
       imageSrc: "/images/work-two.jpg",
