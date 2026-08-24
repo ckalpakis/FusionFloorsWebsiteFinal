@@ -263,19 +263,23 @@ export const siteConfig = {
       process: [
         {
           step: "Outdoor assessment",
-          detail: "We inspect the concrete, drainage, exposure, cracks, and existing coatings before recommending a system.",
+          detail:
+            "We inspect the concrete, drainage, exposure, cracks, and existing coatings before recommending a system.",
         },
         {
           step: "Surface prep & repair",
-          detail: "The surface is mechanically prepared and suitable cracks or damaged areas are repaired for reliable adhesion.",
+          detail:
+            "The surface is mechanically prepared and suitable cracks or damaged areas are repaired for reliable adhesion.",
         },
         {
           step: "Coating & texture",
-          detail: "An exterior-suitable coating system is applied with the selected color and slip-resistant texture.",
+          detail:
+            "An exterior-suitable coating system is applied with the selected color and slip-resistant texture.",
         },
         {
           step: "Final cure",
-          detail: "The coating cures before the patio, walkway, or steps return to normal use.",
+          detail:
+            "The coating cures before the patio, walkway, or steps return to normal use.",
         },
       ],
       costFactors: [
@@ -446,23 +450,19 @@ export const siteConfig = {
   fieldVideos: [
     {
       videoSrc: "/videos/field-one.mp4",
-      posterSrc: "/images/work-one.jpg",
-      label: "Garage Prep",
+      label: "Commercial Top Coat",
     },
     {
       videoSrc: "/videos/field-two.mp4",
-      posterSrc: "/images/work-three.jpg",
-      label: "Flake Broadcast",
+      label: "Garage Top Coat",
     },
     {
       videoSrc: "/videos/field-three.mp4",
-      posterSrc: "/images/work-seven.jpg",
-      label: "Metallic Pour",
+      label: "Flake Broadcast",
     },
     {
       videoSrc: "/videos/field-four.mp4",
-      posterSrc: "/images/work-six.jpg",
-      label: "Finished Floor",
+      label: "Base Coat Pour",
     },
   ],
 
