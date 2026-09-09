@@ -31,7 +31,7 @@ type Review = {
 // workflow.
 
 export const siteConfig = {
-  siteUrl: "https://fusionfloorswi.com",
+  siteUrl: "https://www.fusionfloorswi.com",
 
   business: {
     name: "Fusion Floors",
@@ -321,13 +321,14 @@ export const siteConfig = {
     { name: "Nightfall", column: 2, row: 2 },
   ],
 
-  // Sparta is confirmed as their actual base. The four towns after it are
+  // Sparta is confirmed as their actual base. The five towns after it are
   // the obvious local-SEO targets around it — all inside the "Western
   // Wisconsin" radius the business already advertises, all along the I-90
   // corridor, ordered by market size:
   //
   //   La Crosse   ~26 mi W  — biggest market in the region
   //   Onalaska    ~22 mi W  — newer subdivisions, big attached garages
+  //   Holmen      ~28 mi W  — growing residential and rural community
   //   Tomah       ~13 mi E  — highway/rail hub, commercial + shop floors
   //   West Salem  ~15 mi W  — village + rural outbuildings, between the two
   //
@@ -416,6 +417,25 @@ export const siteConfig = {
         "Much of Onalaska's housing went up in the last few decades, so the slabs we coat here are usually sound and relatively new — that means less repair work, and it also means catching the floor before a winter of salt and hot tires has a chance to pit it.",
         "Three-stall attached garages are common in these subdivisions, and the larger the floor, the more a full-broadcast flake system pays off: it hides everyday grit far better than solid color over that much square footage.",
         "Attached, often heated garages cure predictably year-round, so Onalaska jobs are some of the easiest to schedule in the middle of a Wisconsin winter.",
+      ],
+      recentProject: null as RecentProject | null,
+      testimonial: null as Testimonial | null,
+    },
+    {
+      slug: "holmen",
+      name: "Holmen",
+      state: "WI",
+      h1: "Epoxy Flooring in Holmen, WI",
+      metaDescription:
+        "Garage, basement, patio, outdoor, shop, and commercial concrete coatings in Holmen, WI from Fusion Floors. Free estimates.",
+      blurb:
+        "Fusion Floors serves Holmen with durable concrete coatings for garages, basements, patios, outdoor spaces, shops, and commercial floors.",
+      imageSrc: undefined as string | undefined,
+      neighborhoods: [] as string[],
+      localConditions: [
+        "Wisconsin's freeze-thaw cycle can turn small cracks in unprotected concrete into larger damage. Proper preparation, crack repair, and a sealed coating system help keep moisture from working into the slab.",
+        "Winter road salt and slush are especially hard on garage floors. A professionally installed coating protects the concrete and makes seasonal cleanup much easier.",
+        "Holmen properties range from newer attached garages to rural shops and outbuildings, so we match the coating system and installation schedule to the slab, traffic, and temperature conditions of each space.",
       ],
       recentProject: null as RecentProject | null,
       testimonial: null as Testimonial | null,
@@ -568,7 +588,7 @@ export const siteConfig = {
       // Naming the towns here (not just the region) is deliberate: this
       // answer is eligible for an FAQ rich result, and "do you serve
       // [town]" is one of the most common searches in this trade.
-      a: "Fusion Floors is based in Sparta and serves Western Wisconsin — including La Crosse, Onalaska, Tomah, and West Salem. If your town isn't on that list, call us anyway; we may still be able to help.",
+      a: "Fusion Floors is based in Sparta and serves Western Wisconsin — including La Crosse, Onalaska, Holmen, Tomah, and West Salem. If your town isn't on that list, call us anyway; we may still be able to help.",
     },
     {
       q: "How do I get a free estimate?",
