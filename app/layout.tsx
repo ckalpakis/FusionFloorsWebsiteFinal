@@ -8,7 +8,7 @@ import AttributionCapture from "@/components/AttributionCapture";
 import GhlChatWidget from "@/components/GhlChatWidget";
 import PageMain from "@/components/PageMain";
 import { siteConfig } from "@/config/site.config";
-import { localBusinessSchema } from "@/lib/schema";
+import { localBusinessSchema, websiteSchema } from "@/lib/schema";
 
 // Type pairing for Fusion Floors — see tailwind.config.ts for the why.
 // Barlow Condensed carries the headlines (industrial signage, condensed
@@ -39,21 +39,6 @@ export const metadata: Metadata = {
     template: `%s | ${siteConfig.business.name}`,
   },
   description: siteConfig.business.tagline,
-  alternates: { canonical: "/" },
-  openGraph: {
-    type: "website",
-    siteName: siteConfig.business.name,
-    title: siteConfig.business.name,
-    description: siteConfig.business.tagline,
-    url: siteConfig.siteUrl,
-    images: [{ url: siteConfig.hero.posterSrc }],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: siteConfig.business.name,
-    description: siteConfig.business.tagline,
-  },
-  robots: { index: true, follow: true },
 };
 
 export default function RootLayout({
@@ -65,6 +50,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${displayFont.variable} ${bodyFont.variable} bg-paper text-ink font-body antialiased`}>
         <JsonLd data={localBusinessSchema()} />
+        <JsonLd data={websiteSchema()} />
         <AttributionCapture />
         <a href="#main" className="sr-only focus:not-sr-only">
           Skip to content

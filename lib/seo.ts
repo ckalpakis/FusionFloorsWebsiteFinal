@@ -1,20 +1,34 @@
+import type { Metadata } from "next";
 import { siteConfig, ServiceEntry } from "@/config/site.config";
+import { canonicalUrl } from "@/lib/urls";
 
-const { business } = siteConfig;
-
-/** "Driveway Replacement in Madison, WI" instead of just "Driveway Replacement" —
- * generic alt text wastes the one place per image where you can pair the
- * service with the location for image search. */
-export function serviceAlt(service: ServiceEntry) {
-  return `${service.title} in ${business.city}, ${business.state}`;
+export function pageMetadata({ title, description, path, image = siteConfig.hero.posterSrc }: {
+  title: string; description: string; path: string; image?: string;
+}): Metadata {
+  const fullTitle = `${title} | ${siteConfig.business.name}`;
+  const url = canonicalUrl(path);
+  return {
+    // All URLs are absolute. A null base preserves the homepage trailing slash
+    // instead of Next.js normalizing its canonical/OG URL to the bare origin.
+    metadataBase: null,
+    title: { absolute: fullTitle },
+    description,
+    alternates: { canonical: url },
+    robots: { index: true, follow: true },
+    openGraph: {
+      type: "website", siteName: siteConfig.business.name,
+      title: fullTitle, description, url,
+      images: [{ url: `${siteConfig.siteUrl}${image}` }],
+    },
+    twitter: { card: "summary_large_image", title: fullTitle, description, images: [`${siteConfig.siteUrl}${image}`] },
+  };
 }
 
-/** Gallery captions are already fairly specific ("Curved driveway, aerial")
- * but still benefit from the location + business name for image search
- * and don't repeat it if the caption already mentions the city. */
+// Describe the subject without assigning an unverified project location.
+export function serviceAlt(service: ServiceEntry) {
+  return service.title;
+}
+
 export function galleryAlt(item: { category: string; caption: string }) {
-  const hasLocation = item.caption.toLowerCase().includes(business.city.toLowerCase());
-  return hasLocation
-    ? `${item.category} — ${item.caption}`
-    : `${item.category} — ${item.caption} — ${business.name}, ${business.city}, ${business.state}`;
+  return `${item.category} — ${item.caption}`;
 }

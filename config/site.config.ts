@@ -20,15 +20,10 @@ type Review = {
 // To spin up a new client: copy this file's values, don't touch components.
 //
 // FUSION FLOORS — SPARTA, WI
-// DEMO CONTENT — this version is filled in for an internal presentation
-// to show the company what the finished site can look like. Contact
-// info, service categories, and location are real (confirmed via
-// Facebook/Instagram); process details, cost factors, project write-ups,
-// FAQ answers, and the testimonial below are realistic placeholder copy
-// written to demonstrate the site, not confirmed facts from the owner.
-// Swap them for the real thing — a short interview with the owner per
-// service and per town — before this goes live. See the SOP doc for that
-// workflow.
+// Core contact details, service categories and Sparta base come from the
+// existing business site. Unverified demo project stories/testimonial have
+// been removed. Confirm the existing service-area list and remaining business
+// claims with the owner before expanding them; never invent local proof.
 
 export const siteConfig = {
   siteUrl: "https://www.fusionfloorswi.com",
@@ -46,9 +41,6 @@ export const siteConfig = {
     region: "Western Wisconsin",
     state: "WI",
     postalCode: "54656",
-    latitude: 43.9431,
-    longitude: -90.8117,
-    priceRange: "$$",
     foundedYear: "2019",
     logoSrc: "/images/logo.webp",
     schemaType: "HomeAndConstructionBusiness",
@@ -61,7 +53,7 @@ export const siteConfig = {
   hero: {
     videoSrc: "/videos/hero.mp4",
     posterSrc: "/images/hero-poster-optimized.jpg",
-    headline: "Epoxy Flooring Installation in Sparta, Wisconsin.",
+    headline: "Epoxy Flooring & Garage Floor Coatings in Sparta, WI",
     subhead:
       "Garage, basement, patio, outdoor, and commercial concrete coatings across Western Wisconsin. Free estimates.",
     ctaPrimary: { label: "Get a Free Estimate", href: "/contact" },
@@ -78,7 +70,7 @@ export const siteConfig = {
     eyebrow: "About",
     heading: "Epoxy flooring, done right, in Sparta.",
     body: [
-      "Fusion Floors installs concrete coating systems for garages, basements, patios, outdoor living spaces, and commercial properties across Western Wisconsin, based out of Sparta.",
+      "Based in Sparta, Wisconsin, Fusion Floors installs epoxy flooring and concrete floor coatings across Western Wisconsin. Our services include garage floor coatings, basement floor coatings, commercial coatings, and patio and outdoor coatings.",
       "Every job starts with a real conversation about what you want the space to do — park cars, host family outdoors, or run a business — and a coating system built for that use, not a one-size-fits-all product. We handle surface prep, repair, and installation ourselves from start to finish, so there's one crew accountable for the whole job.",
     ],
     stats: [
@@ -94,14 +86,15 @@ export const siteConfig = {
       slug: "garage-floor-epoxy",
       number: "01",
       title: "Garage Floor Epoxy",
-      h1: "Garage Floor Epoxy in Sparta, WI",
+      seoTitle: "Garage Floor Epoxy & Concrete Coatings",
+      h1: "Garage Floor Epoxy & Concrete Coatings",
       shortDescription:
         "Durable epoxy coating for garage floors — resists hot tire pickup, stains, and chipping.",
       metaDescription:
-        "Garage floor epoxy installation in Sparta, WI — free estimates, flake and solid color options. Call Fusion Floors.",
+        "Residential garage floor coatings in Sparta and Western Wisconsin. Explore epoxy garage floors and concrete coating options. Get a free estimate from Fusion Floors.",
       description: [
         "Your garage floor takes more abuse than almost any other surface in the house — hot tires, dropped tools, salt and gravel tracked in all winter. A properly installed epoxy system turns bare or painted concrete into a surface that shrugs all of that off, stays easy to clean, and actually looks finished.",
-        "We prep every floor the same way regardless of budget: full mechanical grinding down to bare concrete, not just an acid etch, because that's what actually makes a coating last instead of peeling in two winters.",
+        "For residential garage floor coatings, the estimate should account for existing paint, cracks, surface preparation and how you use the garage. Ask about finish options and when the floor can return to foot and vehicle traffic.",
       ],
       process: [
         {
@@ -134,15 +127,11 @@ export const siteConfig = {
         "Hot tire marks or peeling from a prior coating",
         "Cracks or pitting in the slab",
       ],
-      recentProject: {
-        title: "Two-car garage full flake system, Onalaska",
-        detail:
-          "Ground down an old peeling paint coating to bare concrete, repaired several cracks along the slab seams, and installed a full-broadcast flake system with a polyaspartic topcoat — done in a day and a half, ready for vehicle traffic within 48 hours.",
-      } as RecentProject | null,
+      recentProject: null as RecentProject | null,
       faq: [
         {
           q: "How long does epoxy take to cure before I can park in the garage?",
-          a: "Most floors are ready for light foot traffic the next day and full vehicle traffic within 24-72 hours, depending on the topcoat we use. We'll give you an exact timeline before we start.",
+          a: "Cure time depends on the coating system and site conditions. Ask for the foot-traffic and vehicle-traffic timelines for your floor before installation.",
         },
         {
           q: "Can epoxy go over an existing painted floor?",
@@ -156,13 +145,14 @@ export const siteConfig = {
       slug: "basement-epoxy",
       number: "02",
       title: "Basement Floor Epoxy",
-      h1: "Basement Floor Epoxy in Sparta, WI",
+      seoTitle: "Basement Epoxy Flooring in Western Wisconsin",
+      h1: "Basement Epoxy Flooring & Concrete Coatings",
       shortDescription:
         "Moisture-resistant epoxy flooring for basements and interior concrete slabs.",
       metaDescription:
-        "Basement epoxy flooring in Sparta, WI. Moisture-tested installation, free estimates from Fusion Floors.",
+        "Basement epoxy flooring and concrete coatings in Sparta and Western Wisconsin. Discuss your slab, moisture concerns and finish options with Fusion Floors.",
       description: [
-        "Basement slabs behave differently than garage floors — moisture moves through concrete from below, and a coating system that ignores that will bubble and delaminate no matter how good the install looks on day one. We test before we coat, not after something goes wrong.",
+        "Basement floor coatings start with the condition of the concrete. Tell us about damp areas, previous paint and how you plan to use the space so moisture concerns and preparation can be discussed before choosing an epoxy system.",
         "The result is a bright, easy-to-clean floor for a rec room, home gym, or finished basement that holds up the way a painted slab never does.",
       ],
       process: [
@@ -187,15 +177,11 @@ export const siteConfig = {
         "Dusty or spalling concrete basement floor",
         "Wanting a finished, easy-to-clean basement surface",
       ],
-      recentProject: {
-        title: "Finished basement floor, Sparta",
-        detail:
-          "Ran a moisture test on an older slab before quoting, confirmed it was within range for a standard system, and installed a light gray solid-color epoxy floor for a family finishing their basement into a rec room.",
-      } as RecentProject | null,
+      recentProject: null as RecentProject | null,
       faq: [
         {
           q: "Is epoxy safe for a basement that's had moisture issues?",
-          a: "It depends on the severity — we test moisture vapor emission before quoting any basement job. If levels are too high for a standard system, we'll tell you honestly and talk through options rather than install something that's likely to fail.",
+          a: "Moisture concerns need to be evaluated before selecting a coating. Tell us about seepage, damp areas or previous coating failures when requesting your basement estimate.",
         },
       ],
       imageSrc: "/images/service-basement-epoxy.jpg",
@@ -205,13 +191,14 @@ export const siteConfig = {
       slug: "commercial-epoxy",
       number: "03",
       title: "Commercial & Industrial Epoxy",
-      h1: "Commercial Epoxy Flooring in Sparta, WI",
+      seoTitle: "Commercial Epoxy Flooring in Western Wisconsin",
+      h1: "Commercial Epoxy Flooring & Concrete Coatings",
       shortDescription:
         "Heavy-duty epoxy coatings for commercial and industrial floors.",
       metaDescription:
-        "Commercial and industrial epoxy flooring in Western Wisconsin. Contact Fusion Floors for a free estimate.",
+        "Commercial epoxy flooring for shops, retail and warehouse spaces in Sparta, La Crosse and nearby Western Wisconsin communities. Request a free estimate.",
       description: [
-        "Retail floors, shop floors, and warehouse space all take a different kind of punishment than a residential garage — constant foot traffic, chemical exposure, heavier equipment. We spec the coating system to the actual use of the space, and we can schedule installation around your business hours so you're not losing operating days.",
+        "Fusion Floors offers commercial epoxy flooring and concrete coatings in Sparta and Western Wisconsin, including La Crosse, Onalaska, West Salem, Holmen and Tomah. For retail floors, shops and warehouse spaces, discuss foot traffic, equipment, spills and cleaning needs when requesting an estimate. Installation timing and return to service depend on the space and selected system.",
       ],
       process: [
         {
@@ -222,7 +209,7 @@ export const siteConfig = {
         {
           step: "Prep & install",
           detail:
-            "Industrial-grade surface prep and coating application, often scheduled around business hours.",
+            "Surface preparation and coating application, with the installation schedule discussed during the estimate.",
         },
       ],
       costFactors: [
@@ -233,15 +220,11 @@ export const siteConfig = {
       signsYouNeedThis: [
         "Worn, stained, or hard-to-clean commercial concrete floor",
       ],
-      recentProject: {
-        title: "Retail shop floor, Sparta",
-        detail:
-          "Installed a slip-resistant solid-color epoxy system in a small retail space over a weekend so the business didn't have to close for a single business day.",
-      } as RecentProject | null,
+      recentProject: null as RecentProject | null,
       faq: [
         {
           q: "Can you install around our business hours?",
-          a: "Yes — most commercial jobs are scheduled evenings, overnight, or over a weekend specifically so you don't lose operating hours. We'll build the timeline around your schedule, not the other way around.",
+          a: "Tell us your operating hours and any downtime constraints when requesting an estimate. We can discuss scheduling and the cure time needed before the space returns to use.",
         },
       ],
       imageSrc: "/images/service-commercial-epoxy.jpg",
@@ -251,11 +234,12 @@ export const siteConfig = {
       slug: "patio-outdoor-coatings",
       number: "04",
       title: "Patio & Outdoor Coatings",
-      h1: "Patio & Outdoor Coatings in Sparta, WI",
+      seoTitle: "Patio & Outdoor Concrete Coatings in Western Wisconsin",
+      h1: "Patio & Outdoor Concrete Coatings",
       shortDescription:
         "Durable, slip-resistant concrete coatings for patios, walkways, steps, and outdoor living spaces.",
       metaDescription:
-        "Patio and outdoor concrete coatings in Sparta, WI. Durable finishes for patios, walkways, and steps from Fusion Floors. Free estimates.",
+        "Concrete coatings for patios, walkways and exterior steps in Sparta and Western Wisconsin. Discuss surface condition and finish options with Fusion Floors.",
       description: [
         "Patios, walkways, and exterior steps have to handle sun, rain, snow, freeze-thaw cycles, and the grit that comes with a Wisconsin winter. We install outdoor concrete coating systems selected for exterior exposure, traction, and the way you use the space.",
         "A properly prepared and coated surface is easier to clean, more comfortable to live with, and gives worn concrete a finished look. We assess the slab, repair damage where appropriate, and help you choose a texture and color that work with your home and outdoor space.",
@@ -321,37 +305,15 @@ export const siteConfig = {
     { name: "Nightfall", column: 2, row: 2 },
   ],
 
-  // Sparta is confirmed as their actual base. The five towns after it are
-  // the obvious local-SEO targets around it — all inside the "Western
-  // Wisconsin" radius the business already advertises, all along the I-90
-  // corridor, ordered by market size:
-  //
-  //   La Crosse   ~26 mi W  — biggest market in the region
-  //   Onalaska    ~22 mi W  — newer subdivisions, big attached garages
-  //   Holmen      ~28 mi W  — growing residential and rural community
-  //   Tomah       ~13 mi E  — highway/rail hub, commercial + shop floors
-  //   West Salem  ~15 mi W  — village + rural outbuildings, between the two
-  //
-  // IMPORTANT, per the SOP: get the owner to confirm they actually travel
-  // to each of these before launch, and delete any they don't. A location
-  // page for a town you won't drive to generates leads you have to turn
-  // down, and Google eventually works out that the page is thin.
-  //
-  // localConditions below are written from genuine regional facts (freeze-
-  // thaw, winter road salt, river-valley moisture, housing stock age), but
-  // they're still agency copy, not the owner's words — same demo caveat as
-  // the rest of this file. recentProject/testimonial are deliberately null
-  // for the new towns rather than invented: those two fields are the ones
-  // a visitor reads as a factual claim, so they stay empty until there's a
-  // real job and a real customer quote to put in them.
+  // Existing published service areas; do not add towns without owner confirmation.
   locations: [
     {
       slug: "sparta",
       name: "Sparta",
       state: "WI",
-      h1: "Epoxy Flooring in Sparta, WI",
+      h1: "Epoxy Flooring & Garage Floor Coating Services in Sparta, WI",
       metaDescription:
-        "Fusion Floors installs garage, basement, patio, outdoor, and commercial concrete coatings in Sparta, WI. Free estimates.",
+        "Based in Sparta, Fusion Floors offers epoxy flooring for garages, basements, patios and commercial spaces. Discuss your concrete coating project and get a free estimate.",
       blurb:
         "Fusion Floors is based in Sparta and serves Western Wisconsin with concrete coatings for garages, basements, patios, outdoor spaces, and commercial properties.",
       // Optional — falls back to the hero poster image if unset. Add a
@@ -359,45 +321,27 @@ export const siteConfig = {
       imageSrc: undefined as string | undefined,
       neighborhoods: [] as string[],
       localConditions: [
-        "Wisconsin's freeze-thaw winters are hard on unprotected concrete — moisture gets into hairline cracks, freezes, and expands them. A properly sealed epoxy system keeps water out of the slab in the first place, which matters more here than in a milder climate.",
-        "Road salt tracked in all winter breaks down bare or painted concrete fast; a cured epoxy system is built to shrug it off instead of staining and pitting season after season.",
+        "Fusion Floors is based in Sparta. For a garage floor estimate, tell us about winter salt buildup, peeling paint and any cracks so preparation can be included in the project discussion.",
+        "Planning a basement renovation as well as a garage coating? Describe each slab separately: basement moisture, garage traffic and the intended use of each space affect the choice of finish.",
       ],
-      recentProject: {
-        title: "Two-car garage floor, Sparta",
-        detail:
-          "A full tear-out of an old peeling coating and reinstall with a flake system, timed for late fall before the first hard freeze.",
-      } as RecentProject | null,
-      // Demo testimonial — swap for a real customer quote before launch.
-      testimonial: {
-        quote:
-          "They showed up when they said they would, the floor turned out better than I expected, and it's held up through a full Wisconsin winter with zero issues.",
-        author: "Mike R.",
-      } as Testimonial | null,
+      recentProject: null as RecentProject | null,
+      testimonial: null as Testimonial | null,
     },
     {
       slug: "la-crosse",
       name: "La Crosse",
       state: "WI",
-      h1: "Epoxy Flooring in La Crosse, WI",
+      h1: "Epoxy Flooring & Garage Floor Coatings in La Crosse, WI",
       metaDescription:
-        "Garage, basement, patio, outdoor, and commercial concrete coatings in La Crosse, WI from Fusion Floors. Free estimates.",
+        "Explore garage floor coatings, basement epoxy and commercial concrete coatings in La Crosse, WI. Contact Sparta-based Fusion Floors for a free estimate.",
       blurb:
-        "Fusion Floors installs coatings for garages, basements, patios, outdoor spaces, and commercial floors throughout La Crosse — about a 25 minute drive west of our shop in Sparta.",
+        "Fusion Floors installs coatings for garages, basements, patios, outdoor spaces, and commercial floors throughout La Crosse from our base in Sparta.",
       imageSrc: undefined as string | undefined,
-      // Verify against the city's own neighborhood map before launch —
-      // naming a neighborhood wrong is worse than not naming one at all.
-      neighborhoods: [
-        "Downtown",
-        "Lower Northside",
-        "Southside",
-        "Grandview-Emerson",
-        "Washburn",
-        "Bluffside",
-      ] as string[],
+      neighborhoods: [] as string[],
       localConditions: [
-        "La Crosse has a lot of pre-war housing stock, which means a lot of original basement slabs — often uneven, previously painted, and never properly profiled. Those floors need real grinding and crack repair before any coating goes down, which is most of the work on a typical La Crosse basement job.",
-        "Sitting in the Mississippi river valley means a higher water table than the ridge towns, so basement moisture is the first thing we test for here rather than an afterthought. If the slab is pushing too much vapor, we'll say so before quoting instead of installing a floor that delaminates in a year.",
-        "Downtown and Southside garages are frequently detached and unheated, which affects both cure time and which coating system makes sense — we schedule those jobs around temperature rather than fighting it.",
+        "For a La Crosse basement with an older or previously painted slab, share photos of the existing finish and any damp areas. Surface condition and moisture concerns matter more than choosing a color first.",
+        "If your garage is detached or unheated, mention that when requesting an estimate. Concrete temperature and the selected coating affect installation timing and cure time.",
+        "For a retail or shop floor in La Crosse, include the space’s operating hours and typical traffic so the estimate can account for access and return to service.",
       ],
       recentProject: null as RecentProject | null,
       testimonial: null as Testimonial | null,
@@ -406,17 +350,17 @@ export const siteConfig = {
       slug: "onalaska",
       name: "Onalaska",
       state: "WI",
-      h1: "Epoxy Flooring in Onalaska, WI",
+      h1: "Epoxy Flooring & Garage Floor Coatings in Onalaska, WI",
       metaDescription:
-        "Garage, basement, patio, and outdoor concrete coatings in Onalaska, WI from Fusion Floors. Free estimates.",
+        "Plan an epoxy garage floor, basement coating or patio finish in Onalaska, WI. Fusion Floors serves the area from Sparta. Request a free concrete coating estimate.",
       blurb:
-        "Fusion Floors coats garages, basements, patios, outdoor spaces, and commercial floors across Onalaska, roughly 20 minutes west of Sparta on I-90.",
+        "Fusion Floors coats garages, basements, patios, outdoor spaces, and commercial floors across Onalaska from our base in Sparta.",
       imageSrc: undefined as string | undefined,
       neighborhoods: [] as string[],
       localConditions: [
-        "Much of Onalaska's housing went up in the last few decades, so the slabs we coat here are usually sound and relatively new — that means less repair work, and it also means catching the floor before a winter of salt and hot tires has a chance to pit it.",
-        "Three-stall attached garages are common in these subdivisions, and the larger the floor, the more a full-broadcast flake system pays off: it hides everyday grit far better than solid color over that much square footage.",
-        "Attached, often heated garages cure predictably year-round, so Onalaska jobs are some of the easiest to schedule in the middle of a Wisconsin winter.",
+        "When planning an Onalaska garage floor coating, send the floor dimensions and photos of tire marks, stains or existing paint. A larger attached garage may need different preparation from a smaller utility space.",
+        "Compare solid color and decorative flake finishes with the way you use the garage. Parking, storage and workshop areas can have different cleanup and appearance priorities.",
+        "Let us know whether the garage is heated and when you need vehicle access again. Those details help frame the installation and curing discussion.",
       ],
       recentProject: null as RecentProject | null,
       testimonial: null as Testimonial | null,
@@ -425,17 +369,17 @@ export const siteConfig = {
       slug: "holmen",
       name: "Holmen",
       state: "WI",
-      h1: "Epoxy Flooring in Holmen, WI",
+      h1: "Epoxy Flooring & Garage Floor Coatings in Holmen, WI",
       metaDescription:
-        "Garage, basement, patio, outdoor, shop, and commercial concrete coatings in Holmen, WI from Fusion Floors. Free estimates.",
+        "Discuss garage, basement, patio and shop floor coatings in Holmen, WI with Fusion Floors. Explore epoxy finishes and request a free estimate for your concrete.",
       blurb:
         "Fusion Floors serves Holmen with durable concrete coatings for garages, basements, patios, outdoor spaces, shops, and commercial floors.",
       imageSrc: undefined as string | undefined,
       neighborhoods: [] as string[],
       localConditions: [
-        "Wisconsin's freeze-thaw cycle can turn small cracks in unprotected concrete into larger damage. Proper preparation, crack repair, and a sealed coating system help keep moisture from working into the slab.",
-        "Winter road salt and slush are especially hard on garage floors. A professionally installed coating protects the concrete and makes seasonal cleanup much easier.",
-        "Holmen properties range from newer attached garages to rural shops and outbuildings, so we match the coating system and installation schedule to the slab, traffic, and temperature conditions of each space.",
+        "A Holmen garage or shop estimate should start with the slab, not just its square footage. Include close-up photos of cracks, pitting and previous coatings along with an overall view.",
+        "If the project includes both indoor and outdoor concrete, list each surface separately. A garage, patio and walkway may need different preparation and coating choices.",
+        "Tell us about road salt, slush and cleaning routines when discussing a garage finish, and whether the space is heated during colder months.",
       ],
       recentProject: null as RecentProject | null,
       testimonial: null as Testimonial | null,
@@ -444,17 +388,17 @@ export const siteConfig = {
       slug: "tomah",
       name: "Tomah",
       state: "WI",
-      h1: "Epoxy Flooring in Tomah, WI",
+      h1: "Epoxy Flooring & Garage Floor Coatings in Tomah, WI",
       metaDescription:
-        "Garage, patio, outdoor, shop, and commercial concrete coatings in Tomah, WI from Fusion Floors in nearby Sparta. Free estimates.",
+        "Garage and commercial epoxy flooring in Tomah, WI from Sparta-based Fusion Floors. Discuss shop floors, basement coatings or outdoor concrete and get a free estimate.",
       blurb:
-        "Fusion Floors installs coatings in Tomah for garages, patios, outdoor spaces, shops, and commercial floors — about 15 minutes east of our base in Sparta.",
+        "Fusion Floors installs coatings in Tomah for garages, patios, outdoor spaces, shops, and commercial floors from our base in Sparta.",
       imageSrc: undefined as string | undefined,
       neighborhoods: [] as string[],
       localConditions: [
-        "Tomah sits at the I-90/I-94 junction, so there's a lot more shop, service bay, and light industrial floor here than in a typical town this size. Those floors need a system specced to traffic and chemical exposure, not the same coating that goes in a residential garage.",
-        "Commercial work in Tomah is almost always scheduled evenings or weekends — losing operating days costs a business more than the floor does, so we build the timeline around your hours.",
-        "Between highway traffic and a long salt season, bare concrete here takes a beating from late November through March; sealing the slab keeps the salt out instead of letting it work into the surface year after year.",
+        "For a Tomah shop or commercial floor, include the type of traffic, equipment and spills the surface handles. A service area and a customer-facing retail floor have different priorities.",
+        "Share operating hours, access constraints and how long the space can be out of use. Installation and curing need to be planned before moving stock or equipment.",
+        "Residential projects in Tomah can include garage, basement and outdoor concrete. Send photos of each area and describe the intended use when requesting an estimate.",
       ],
       recentProject: null as RecentProject | null,
       testimonial: null as Testimonial | null,
@@ -463,17 +407,17 @@ export const siteConfig = {
       slug: "west-salem",
       name: "West Salem",
       state: "WI",
-      h1: "Epoxy Flooring in West Salem, WI",
+      h1: "Epoxy Flooring & Garage Floor Coatings in West Salem, WI",
       metaDescription:
-        "Garage, basement, patio, outdoor, pole barn, and shop floor coatings in West Salem, WI from Fusion Floors. Free estimates.",
+        "Residential garage floor coatings, basement epoxy and outdoor concrete coatings in West Salem, WI. Contact Fusion Floors to discuss your floor and get a free estimate.",
       blurb:
         "Fusion Floors serves West Salem with coatings for garages, basements, patios, outdoor spaces, shops, and outbuildings — a short drive west of Sparta on I-90.",
       imageSrc: undefined as string | undefined,
       neighborhoods: [] as string[],
       localConditions: [
-        "A lot of West Salem property is rural or semi-rural, which means pole barns, workshops, and outbuildings alongside the usual attached garage — bigger slabs, and often ones that were poured without a coating ever being part of the plan.",
-        "Unheated shop and barn slabs are the main scheduling constraint out here: epoxy needs the concrete itself within a workable temperature range to cure properly, so those jobs get booked for the right stretch of the year rather than squeezed in during a cold snap.",
-        "Gravel and field dirt tracked across a bare slab acts like sandpaper over a few seasons. A cured topcoat takes that abrasion instead of the concrete, and sweeps clean rather than dusting.",
+        "For a West Salem garage, workshop or outbuilding, describe what uses the floor: passenger vehicles, tools, storage or other equipment. The intended use helps guide the concrete coating discussion.",
+        "Mention unheated spaces and any existing paint or sealer before scheduling. The slab condition and temperature affect preparation and installation timing.",
+        "For a patio or exterior steps, include photos showing the edges, drainage and worn areas. Outdoor concrete needs a finish selected for exposure and traction.",
       ],
       recentProject: null as RecentProject | null,
       testimonial: null as Testimonial | null,
@@ -585,9 +529,6 @@ export const siteConfig = {
   faq: [
     {
       q: "What areas do you serve?",
-      // Naming the towns here (not just the region) is deliberate: this
-      // answer is eligible for an FAQ rich result, and "do you serve
-      // [town]" is one of the most common searches in this trade.
       a: "Fusion Floors is based in Sparta and serves Western Wisconsin — including La Crosse, Onalaska, Holmen, Tomah, and West Salem. If your town isn't on that list, call us anyway; we may still be able to help.",
     },
     {
@@ -595,28 +536,20 @@ export const siteConfig = {
       a: "Contact via phone, text, email, or Facebook Messenger — (608) 633-4920, fusionfloorsff@gmail.com.",
     },
     {
-      q: "Are you licensed and insured?",
-      a: "Yes — Fusion Floors carries liability insurance for both residential and commercial installation work.",
-    },
-    {
       q: "How much does epoxy flooring cost?",
       a: "It depends on square footage, the condition of your existing concrete, and the finish you choose — solid color, flake, or metallic. Most residential garage floors fall in a fairly predictable range, but we'll give you an exact number after seeing the space, not a ballpark over the phone.",
     },
     {
       q: "How long does epoxy flooring actually last?",
-      a: "A properly prepped and installed epoxy system typically holds up for 10-20+ years depending on traffic and how it's maintained. The single biggest factor isn't the epoxy itself — it's whether the concrete was fully ground down before coating, which is why we never skip that step.",
+      a: "Floor life depends on surface preparation, the coating system, traffic and maintenance. Discuss the expected use of your space and care requirements when choosing a finish.",
     },
     {
       q: "How long does an installation take?",
-      a: "Most single or two-car garage floors are done in one to two days, with the floor cured enough for vehicle traffic within 24-72 hours. Larger commercial jobs or basement projects vary — we'll give you a firm timeline as part of the estimate.",
+      a: "Timing depends on floor size, repairs, the selected coating and curing conditions. Ask for a project schedule and separate return-to-use times for foot and vehicle traffic with your estimate.",
     },
     {
       q: "Should I install epoxy myself or hire a professional?",
       a: "DIY epoxy kits can work for a small, low-traffic space, but most peeling and bubbling floors we get called to fix started as a DIY job where the concrete wasn't properly ground first. Professional installation costs more upfront but avoids redoing the whole floor in a year or two.",
-    },
-    {
-      q: "Do you offer a warranty on your work?",
-      a: "Yes — ask us for the specifics for your project type when you get your estimate, since coverage can vary slightly between residential and commercial installs.",
     },
   ],
 

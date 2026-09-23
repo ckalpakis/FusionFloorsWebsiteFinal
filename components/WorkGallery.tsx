@@ -80,7 +80,6 @@ export default function WorkGallery({
     updateThumb();
     window.addEventListener("resize", updateThumb);
     return () => window.removeEventListener("resize", updateThumb);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [variant]);
 
   return (
@@ -118,7 +117,7 @@ export default function WorkGallery({
             {items.map((g, i) => (
               <div key={i} className="snap-start shrink-0 w-[75vw] sm:w-[45vw] md:w-[22vw]">
                 <div className="relative aspect-[4/5] overflow-hidden">
-                  <Image src={g.imageSrc} alt={galleryAlt(g)} fill className="object-cover" />
+                  <Image src={g.imageSrc} alt={galleryAlt(g)} fill sizes="(min-width: 768px) 22vw, (min-width: 640px) 45vw, 75vw" className="object-cover" />
                 </div>
                 <div className="pt-3 pr-4">
                   <p className="text-accent text-xs font-semibold uppercase tracking-widest">
@@ -168,7 +167,7 @@ export default function WorkGallery({
           {items.map((g, i) => (
             <div key={i}>
               <div className="relative aspect-square overflow-hidden">
-                <Image src={g.imageSrc} alt={galleryAlt(g)} fill className="object-cover" />
+                <Image src={g.imageSrc} alt={galleryAlt(g)} fill sizes="(min-width: 768px) 25vw, 50vw" className="object-cover" />
               </div>
               <div className="pt-3 px-3 pb-6">
                 <p className="text-accent text-xs font-semibold uppercase tracking-widest">

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import QuoteForm from "@/components/QuoteForm";
 import Reviews from "@/components/Reviews";
@@ -6,11 +6,11 @@ import JsonLd from "@/components/JsonLd";
 import { breadcrumbSchema } from "@/lib/schema";
 import { siteConfig } from "@/config/site.config";
 
-export const metadata: Metadata = {
-  title: "Contact / Free Quote",
-  description: `Request a free quote from ${siteConfig.business.name}. Call ${siteConfig.business.phone} or send project details.`,
-  alternates: { canonical: "/contact" },
-};
+export const metadata = pageMetadata({
+  title: "Free Estimate for Epoxy Flooring & Concrete Coatings",
+  description: "Request a free estimate from Fusion Floors for garage, basement, commercial or patio coatings in Western Wisconsin. Call (608) 633-4920 or send project details.",
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (

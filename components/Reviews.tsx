@@ -14,7 +14,7 @@ export default function Reviews({
   if (reviews.items.length === 0) return null;
 
   return (
-    <section className="bg-paper px-6 py-20 text-ink md:py-28">
+    <section id="reviews" className="bg-paper px-6 py-20 text-ink md:py-28">
       <div className="mx-auto max-w-6xl border-t border-accent-ink/30 pt-6">
         <div className="grid gap-6 md:grid-cols-[minmax(0,1fr)_minmax(260px,420px)] md:items-end">
           <div>

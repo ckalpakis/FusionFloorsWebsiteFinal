@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import Image from "next/image";
 import JsonLd from "@/components/JsonLd";
@@ -6,11 +6,11 @@ import MidPageCTA from "@/components/MidPageCTA";
 import { siteConfig } from "@/config/site.config";
 import { breadcrumbSchema } from "@/lib/schema";
 
-export const metadata: Metadata = {
-  title: "Service Areas",
-  description: `Towns and areas ${siteConfig.business.name} serves across ${siteConfig.business.region}.`,
-  alternates: { canonical: "/locations" },
-};
+export const metadata = pageMetadata({
+  title: "Epoxy Flooring Service Areas in Western Wisconsin",
+  description: "Explore Fusion Floors services in Sparta, La Crosse, Onalaska, West Salem, Holmen and Tomah. Get a free estimate for your concrete floor coating project.",
+  path: "/locations",
+});
 
 export default function LocationsPage() {
   const { hero } = siteConfig;
@@ -50,8 +50,9 @@ export default function LocationsPage() {
                 <div className="relative h-40 w-full overflow-hidden">
                   <Image
                     src={l.imageSrc ?? hero.posterSrc}
-                    alt={`${siteConfig.business.name} in ${l.name}, ${l.state}`}
+                    alt=""
                     fill
+                    sizes="(min-width: 896px) 412px, (min-width: 640px) 50vw, 100vw"
                     className="object-cover group-hover:scale-105 transition-transform"
                   />
                 </div>

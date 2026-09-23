@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import WorkGallery from "@/components/WorkGallery";
 import Reviews from "@/components/Reviews";
@@ -8,11 +8,11 @@ import JsonLd from "@/components/JsonLd";
 import { breadcrumbSchema } from "@/lib/schema";
 import { siteConfig } from "@/config/site.config";
 
-export const metadata: Metadata = {
-  title: "Our Work",
-  description: `Recent projects completed by ${siteConfig.business.name} across ${siteConfig.business.region}.`,
-  alternates: { canonical: "/work" },
-};
+export const metadata = pageMetadata({
+  title: "Epoxy & Concrete Coating Projects and Reviews",
+  description: "See Fusion Floors garage, basement and outdoor concrete coating photos and customer feedback from Western Wisconsin. Request a free estimate for your floor.",
+  path: "/work",
+});
 
 export default function WorkPage() {
   return (

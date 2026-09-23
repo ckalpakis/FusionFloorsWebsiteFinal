@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import Image from "next/image";
 import About from "@/components/About";
@@ -7,11 +7,11 @@ import JsonLd from "@/components/JsonLd";
 import { breadcrumbSchema } from "@/lib/schema";
 import { siteConfig } from "@/config/site.config";
 
-export const metadata: Metadata = {
-  title: "About",
-  description: `Learn about ${siteConfig.business.name}, a family owned business serving ${siteConfig.business.city} and ${siteConfig.business.region}.`,
-  alternates: { canonical: "/about" },
-};
+export const metadata = pageMetadata({
+  title: "About Fusion Floors in Sparta, WI",
+  description: "Meet Fusion Floors, based in Sparta and serving Western Wisconsin with epoxy flooring and concrete coatings for homes and businesses.",
+  path: "/about",
+});
 
 export default function AboutPage() {
   const { business, hero } = siteConfig;
@@ -29,7 +29,7 @@ export default function AboutPage() {
           hero poster image rather than going without a banner at all. */}
       <section className="relative overflow-hidden bg-ink text-paper">
         <div className="absolute inset-0">
-          <Image src={hero.posterSrc} alt={business.name} fill className="object-cover" priority />
+          <Image src={hero.posterSrc} alt={business.name} fill sizes="100vw" className="object-cover" priority />
           <div className="absolute inset-0 bg-black/70" />
         </div>
 

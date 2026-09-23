@@ -9,9 +9,11 @@ import QuoteForm from "@/components/QuoteForm";
 import ColorCatalogue from "@/components/ColorCatalogue";
 import { siteConfig } from "@/config/site.config";
 import { serviceSchema, breadcrumbSchema, faqSchema } from "@/lib/schema";
-import { serviceAlt } from "@/lib/seo";
+import { pageMetadata, serviceAlt } from "@/lib/seo";
 
 // Pre-render one static page per service at build time.
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return siteConfig.services.map((s) => ({ slug: s.slug }));
 }
@@ -27,17 +29,13 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const service = getService(slug);
-  if (!service) return {};
-  return {
-    title: service.title,
+  if (!service) notFound();
+  return pageMetadata({
+    title: service.seoTitle,
     description: service.metaDescription,
-    alternates: { canonical: `/services/${service.slug}` },
-    openGraph: {
-      title: `${service.title} | ${siteConfig.business.name}`,
-      description: service.metaDescription,
-      images: [{ url: service.imageSrc }],
-    },
-  };
+    path: `/services/${service.slug}`,
+    image: service.imageSrc,
+  });
 }
 
 export default async function ServicePage({
@@ -68,7 +66,7 @@ export default async function ServicePage({
           like part of the same site instead of a bolted-on info page. */}
       <section className="relative overflow-hidden bg-ink text-paper">
         <div className="absolute inset-0">
-          <Image src={service.imageSrc} alt={serviceAlt(service)} fill className="object-cover" priority />
+          <Image src={service.imageSrc} alt={serviceAlt(service)} fill sizes="100vw" className="object-cover" priority />
           <div className="absolute inset-0 bg-black/70" />
         </div>
 
@@ -86,7 +84,7 @@ export default async function ServicePage({
           <h1 className="font-display uppercase text-4xl md:text-6xl leading-none mt-3">
             {service.h1}
           </h1>
-          <p className="mt-5 max-w-xl text-paper/85">{service.shortDescription}</p>
+          <p className="mt-5 max-w-xl text-paper/85">{service.shortDescription} Serving Sparta and Western Wisconsin.</p>
 
           <div className="mt-8 flex flex-col sm:flex-row gap-4">
             <Link
@@ -221,11 +219,6 @@ export default async function ServicePage({
           </div>
         )}
 
-        {/* Internal linking mesh: every service links to the combo page
-            for each location we serve (not just the generic location
-            page), so a visitor lands directly on the page that actually
-            targets "[service] in [town]". Styled as pill buttons rather
-            than plain underlines — more obviously clickable. */}
         <div className="mt-16 border-t border-accent-ink/25 pt-8">
           <h2 className="font-display text-xl font-semibold">
             {service.title} across {siteConfig.business.region}
@@ -234,7 +227,7 @@ export default async function ServicePage({
             {siteConfig.locations.map((l) => (
               <li key={l.slug}>
                 <Link
-                  href={`/services/${service.slug}/${l.slug}`}
+                  href={`/locations/${l.slug}`}
                   className="inline-block border border-ink/15 rounded-full px-4 py-2 hover:border-accent-ink hover:text-accent-ink transition-colors"
                 >
                   {service.title} in {l.name}

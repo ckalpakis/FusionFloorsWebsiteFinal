@@ -5,6 +5,8 @@
 
 import { siteConfig, ServiceEntry, LocationEntry } from "@/config/site.config";
 
+import { canonicalUrl } from "@/lib/urls";
+
 const { business, siteUrl } = siteConfig;
 
 // Sitewide LocalBusiness — render once, in the root layout.
@@ -18,25 +20,11 @@ export function localBusinessSchema() {
     "@id": `${siteUrl}/#business`,
     name: business.name,
     legalName: business.legalName,
-    url: siteUrl,
+    url: `${siteUrl}/`,
     telephone: business.phoneHref.replace("tel:", ""),
     email: business.email,
-    priceRange: business.priceRange,
     image: `${siteUrl}${business.logoSrc}`,
     logo: `${siteUrl}${business.logoSrc}`,
-    address: {
-      "@type": "PostalAddress",
-      ...(business.streetAddress ? { streetAddress: business.streetAddress } : {}),
-      addressLocality: business.city,
-      addressRegion: business.state,
-      postalCode: business.postalCode,
-      addressCountry: "US",
-    },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: business.latitude,
-      longitude: business.longitude,
-    },
     areaServed: siteConfig.locations.map((l) => ({
       "@type": "City",
       name: `${l.name}, ${l.state}`,
@@ -76,26 +64,6 @@ export function locationServiceSchema(location: LocationEntry) {
   };
 }
 
-// The service × location combo page — e.g. "Basement Epoxy in Tomah, WI"
-// at /services/basement-epoxy/tomah. This is what actually ranks for
-// "[service] in [town]" searches; the plain service page and plain
-// location page alone don't target that specific query as directly.
-export function serviceLocationSchema(service: ServiceEntry, location: LocationEntry) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    serviceType: service.title,
-    name: `${service.title} in ${location.name}, ${location.state}`,
-    description: `${service.metaDescription} Serving ${location.name}, ${location.state}.`,
-    url: `${siteUrl}/services/${service.slug}/${location.slug}`,
-    provider: { "@id": `${siteUrl}/#business` },
-    areaServed: {
-      "@type": "City",
-      name: `${location.name}, ${location.state}`,
-    },
-  };
-}
-
 export function faqSchema(items: { q: string; a: string }[]) {
   return {
     "@context": "https://schema.org",
@@ -116,7 +84,18 @@ export function breadcrumbSchema(items: { name: string; url: string }[]) {
       "@type": "ListItem",
       position: i + 1,
       name: item.name,
-      item: item.url,
+      item: canonicalUrl(new URL(item.url).pathname),
     })),
+  };
+}
+
+export function websiteSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${siteUrl}/#website`,
+    url: `${siteUrl}/`,
+    name: business.name,
+    publisher: { "@id": `${siteUrl}/#business` },
   };
 }

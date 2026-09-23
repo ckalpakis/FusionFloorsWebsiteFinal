@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import ServicesGrid from "@/components/ServicesGrid";
 import MidPageCTA from "@/components/MidPageCTA";
@@ -6,11 +6,11 @@ import JsonLd from "@/components/JsonLd";
 import { breadcrumbSchema } from "@/lib/schema";
 import { siteConfig } from "@/config/site.config";
 
-export const metadata: Metadata = {
-  title: "Services",
-  description: `All services offered by ${siteConfig.business.name} across ${siteConfig.business.region}.`,
-  alternates: { canonical: "/services" },
-};
+export const metadata = pageMetadata({
+  title: "Epoxy Flooring & Concrete Coating Services",
+  description: "Explore garage, basement, commercial and outdoor concrete coatings from Fusion Floors in Sparta and Western Wisconsin. Request a free estimate.",
+  path: "/services",
+});
 
 export default function ServicesPage() {
   return (

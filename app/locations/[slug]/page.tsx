@@ -1,3 +1,4 @@
+import { pageMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
@@ -8,6 +9,8 @@ import StickyMobileCTA from "@/components/StickyMobileCTA";
 import QuoteForm from "@/components/QuoteForm";
 import { siteConfig } from "@/config/site.config";
 import { locationServiceSchema, breadcrumbSchema } from "@/lib/schema";
+
+export const dynamicParams = false;
 
 export function generateStaticParams() {
   return siteConfig.locations.map((l) => ({ slug: l.slug }));
@@ -24,12 +27,12 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const location = getLocation(slug);
-  if (!location) return {};
-  return {
-    title: `Serving ${location.name}, ${location.state}`,
+  if (!location) notFound();
+  return pageMetadata({
+    title: location.h1,
     description: location.metaDescription,
-    alternates: { canonical: `/locations/${location.slug}` },
-  };
+    path: `/locations/${location.slug}`,
+  });
 }
 
 export default async function LocationPage({
@@ -63,7 +66,7 @@ export default async function LocationPage({
           different, cheaper site than the one they clicked from. */}
       <section className="relative overflow-hidden bg-ink text-paper">
         <div className="absolute inset-0">
-          <Image src={bannerImage} alt={`${business.name} in ${location.name}, ${location.state}`} fill className="object-cover" priority />
+          <Image src={bannerImage} alt="" fill sizes="100vw" className="object-cover" priority />
           <div className="absolute inset-0 bg-black/70" />
         </div>
 
@@ -113,7 +116,7 @@ export default async function LocationPage({
       </section>
 
       {/* Neighborhoods + recent project — light section */}
-      <section className="px-6 py-16 max-w-4xl mx-auto">
+      {(location.neighborhoods.length > 0 || location.recentProject || location.testimonial) && <section className="px-6 py-16 max-w-4xl mx-auto">
         {location.neighborhoods.length > 0 && (
           <div className="max-w-2xl">
             <p className="text-sm font-medium text-ink/60">Areas we work in {location.name}</p>
@@ -145,7 +148,7 @@ export default async function LocationPage({
             </footer>
           </blockquote>
         )}
-      </section>
+      </section>}
 
       {/* Local conditions — dark block, breaking the page rhythm the
           same way the service pages do rather than one long white scroll. */}
@@ -153,7 +156,7 @@ export default async function LocationPage({
         <section className="bg-ink text-paper px-6 py-16">
           <div className="max-w-4xl mx-auto">
             <div className="max-w-2xl">
-              <h2 className="font-display uppercase text-2xl">Building for {location.name}</h2>
+              <h2 className="font-display uppercase text-2xl">Planning your floor in {location.name}</h2>
               <ul className="mt-4 space-y-2 text-paper/80">
                 {location.localConditions.map((c, i) => (
                   <li key={i} className="flex gap-3">
@@ -183,7 +186,7 @@ export default async function LocationPage({
             {siteConfig.services.map((s) => (
               <li key={s.slug}>
                 <Link
-                  href={`/services/${s.slug}/${location.slug}`}
+                  href={`/services/${s.slug}`}
                   className="inline-block border border-ink/15 rounded-full px-4 py-2 hover:border-accent-ink hover:text-accent-ink transition-colors"
                 >
                   {s.title}
