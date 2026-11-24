@@ -3,7 +3,7 @@
 // means every page gets consistent, valid schema instead of hand-rolled
 // script tags copy-pasted per page.
 
-import { siteConfig, ServiceEntry, LocationEntry } from "@/config/site.config";
+import { siteConfig, ServiceEntry, LocationEntry, BlogPost } from "@/config/site.config";
 
 import { canonicalUrl } from "@/lib/urls";
 
@@ -80,12 +80,36 @@ export function breadcrumbSchema(items: { name: string; url: string }[]) {
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    itemListElement: items.map((item, i) => ({
-      "@type": "ListItem",
-      position: i + 1,
-      name: item.name,
-      item: canonicalUrl(new URL(item.url).pathname),
-    })),
+    itemListElement: items.map((item, i) => {
+      const name = item.name.trim();
+      if (!name) throw new Error("BreadcrumbList item is missing a name");
+      return {
+        "@type": "ListItem",
+        position: i + 1,
+        name,
+        item: canonicalUrl(new URL(item.url).pathname),
+      };
+    }),
+  };
+}
+
+export function articleSchema(post: BlogPost) {
+  const url = canonicalUrl(`/blog/${post.slug}`);
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: post.title,
+    description: post.description,
+    datePublished: post.publishedAt,
+    dateModified: post.updatedAt ?? post.publishedAt,
+    author: {
+      "@type": "Organization",
+      name: business.name,
+      url: `${siteUrl}/`,
+    },
+    publisher: { "@id": `${siteUrl}/#business` },
+    mainEntityOfPage: url,
+    url,
   };
 }
 

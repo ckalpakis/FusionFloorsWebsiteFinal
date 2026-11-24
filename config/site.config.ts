@@ -16,6 +16,15 @@ type Review = {
   rating: number;
 };
 
+export type BlogPost = {
+  slug: string;
+  title: string;
+  description: string;
+  publishedAt: string;
+  updatedAt?: string;
+  paragraphs: string[];
+};
+
 // Single source of truth for one client site.
 // To spin up a new client: copy this file's values, don't touch components.
 //
@@ -53,9 +62,10 @@ export const siteConfig = {
   hero: {
     videoSrc: "/videos/hero.mp4",
     posterSrc: "/images/hero-poster-optimized.jpg",
-    headline: "Epoxy Flooring & Garage Floor Coatings in Sparta, WI",
+    headline:
+      "Epoxy Floor Coatings for Western Wisconsin and the La Crosse Area",
     subhead:
-      "Garage, basement, patio, outdoor, and commercial concrete coatings across Western Wisconsin. Free estimates.",
+      "Garage, basement, patio, outdoor, and commercial concrete coatings across Western Wisconsin and the La Crosse area. Based in Sparta. Free estimates.",
     ctaPrimary: { label: "Get a Free Estimate", href: "/contact" },
     badges: ["Free Estimates", "Western WI", "Sparta Based"],
     marqueeItems: [
@@ -68,7 +78,7 @@ export const siteConfig = {
 
   about: {
     eyebrow: "About",
-    heading: "Epoxy flooring, done right, in Sparta.",
+    heading: "Epoxy flooring, done right, across Western Wisconsin.",
     body: [
       "Based in Sparta, Wisconsin, Fusion Floors installs epoxy flooring and concrete floor coatings across Western Wisconsin. Our services include garage floor coatings, basement floor coatings, commercial coatings, and patio and outdoor coatings.",
       "Every job starts with a real conversation about what you want the space to do — park cars, host family outdoors, or run a business — and a coating system built for that use, not a one-size-fits-all product. We handle surface prep, repair, and installation ourselves from start to finish, so there's one crew accountable for the whole job.",
@@ -311,11 +321,35 @@ export const siteConfig = {
       slug: "sparta",
       name: "Sparta",
       state: "WI",
-      h1: "Epoxy Flooring & Garage Floor Coating Services in Sparta, WI",
+      h1: "Epoxy Floor Coatings in Sparta, WI",
       metaDescription:
-        "Based in Sparta, Fusion Floors offers epoxy flooring for garages, basements, patios and commercial spaces. Discuss your concrete coating project and get a free estimate.",
+        "Epoxy floor coatings in Sparta, WI, where Fusion Floors is based. Garage, basement, patio, and commercial concrete coatings. Free estimates.",
       blurb:
-        "Fusion Floors is based in Sparta and serves Western Wisconsin with concrete coatings for garages, basements, patios, outdoor spaces, and commercial properties.",
+        "Fusion Floors is based in Sparta and coats garages, basements, patios, outdoor spaces, and commercial floors here and across Western Wisconsin.",
+      body: [
+        "Fusion Floors is based in Sparta, so projects in town do not start with a drive from another city. Around Sparta are smaller communities such as Angelo to the north, Rockland to the south, and Bangor to the west, with Fort McCoy to the east along I-90.",
+        "The floors we coat in Sparta are the services on this site: garage floors, basements, patios and other outdoor concrete, and commercial or shop floors. An estimate starts with how you use the space and the condition of the slab.",
+        "West Salem is about 15 miles west on I-90, and Tomah is about 20 miles east. Onalaska is about 25 miles west. La Crosse and Holmen are about 30 miles west, with Holmen north of Onalaska. Each of those cities has its own page.",
+      ],
+      faq: [
+        {
+          q: "Is Fusion Floors based in Sparta?",
+          a: "Yes. Fusion Floors is based in Sparta, Wisconsin, and also serves La Crosse, Onalaska, Holmen, Tomah, and West Salem.",
+        },
+        {
+          q: "What floor coatings do you install in Sparta?",
+          a: "Garage floor epoxy, basement floor coatings, patio and outdoor concrete coatings, and commercial coatings. Each service has its own page with the process and what to send for an estimate.",
+        },
+        {
+          q: "How far are the other service areas from Sparta?",
+          a: "West Salem is about 15 miles west and Tomah is about 20 miles east, both on I-90. Onalaska is about 25 miles west. La Crosse and Holmen are about 30 miles west.",
+        },
+        {
+          q: "How do I request a Sparta estimate?",
+          a: "Call or text (608) 633-4920, email fusionfloorsff@gmail.com, or use the contact form. Estimates are free.",
+        },
+      ],
+      nearby: ["west-salem", "tomah", "la-crosse"],
       // Optional — falls back to the hero poster image if unset. Add a
       // real jobsite photo from Sparta specifically when you have one.
       imageSrc: undefined as string | undefined,
@@ -331,11 +365,35 @@ export const siteConfig = {
       slug: "la-crosse",
       name: "La Crosse",
       state: "WI",
-      h1: "Epoxy Flooring & Garage Floor Coatings in La Crosse, WI",
+      h1: "Epoxy Floor Coatings in La Crosse, WI",
       metaDescription:
-        "Explore garage floor coatings, basement epoxy and commercial concrete coatings in La Crosse, WI. Contact Sparta-based Fusion Floors for a free estimate.",
+        "Epoxy floor coatings in La Crosse, WI, about 30 miles west of Sparta. Garages, basements, patios, and commercial floors. Free estimates from Fusion Floors.",
       blurb:
-        "Fusion Floors installs coatings for garages, basements, patios, outdoor spaces, and commercial floors throughout La Crosse from our base in Sparta.",
+        "Fusion Floors coats garages, basements, patios, outdoor spaces, and commercial floors in La Crosse, about 30 miles west of our Sparta base.",
+      body: [
+        "La Crosse is about 30 miles west of our Sparta base, a direct drive on I-90. The city includes neighborhoods such as the North Side, the South Side, and downtown, plus French Island in the Town of Campbell. Onalaska and Holmen are just to the north.",
+        "In La Crosse we coat garage floors, basements, patios and other outdoor concrete, and commercial floors such as shops and retail spaces. Those are the same four services listed on this site. Share how the space is used and the condition of the concrete when you ask for an estimate.",
+        "Onalaska and Holmen sit just north of the city. West Salem is on I-90 between La Crosse and Sparta. Use the city pages linked on this page if the project is in one of those towns rather than in La Crosse itself.",
+      ],
+      faq: [
+        {
+          q: "How far is La Crosse from your Sparta base?",
+          a: "La Crosse is about 30 miles west of Sparta on I-90.",
+        },
+        {
+          q: "Which parts of the La Crosse area do you publish as service areas?",
+          a: "La Crosse, Onalaska, Holmen, and West Salem each have a page. Sparta, where we are based, and Tomah are farther east on I-90.",
+        },
+        {
+          q: "What kinds of floors do you coat in La Crosse?",
+          a: "Garage floors, basements, patios and outdoor concrete, and commercial floors such as shops and retail spaces.",
+        },
+        {
+          q: "How do I get a free estimate in La Crosse?",
+          a: "Call (608) 633-4920 or send the details through the contact form. Include the neighborhood and what the floor is used for.",
+        },
+      ],
+      nearby: ["onalaska", "holmen", "west-salem"],
       imageSrc: undefined as string | undefined,
       neighborhoods: [] as string[],
       localConditions: [
@@ -350,11 +408,35 @@ export const siteConfig = {
       slug: "onalaska",
       name: "Onalaska",
       state: "WI",
-      h1: "Epoxy Flooring & Garage Floor Coatings in Onalaska, WI",
+      h1: "Epoxy Floor Coatings in Onalaska, WI",
       metaDescription:
-        "Plan an epoxy garage floor, basement coating or patio finish in Onalaska, WI. Fusion Floors serves the area from Sparta. Request a free concrete coating estimate.",
+        "Epoxy floor coatings in Onalaska, WI, about 25 miles west of Sparta, near Lake Onalaska. Garage, basement, patio, and commercial concrete. Free estimates.",
       blurb:
-        "Fusion Floors coats garages, basements, patios, outdoor spaces, and commercial floors across Onalaska from our base in Sparta.",
+        "Fusion Floors coats garages, basements, patios, outdoor spaces, and commercial floors in Onalaska, about 25 miles west of Sparta.",
+      body: [
+        "Onalaska is about 25 miles west of Sparta, between West Salem and La Crosse, along Lake Onalaska. Local areas include the village center along Main Street, the Sand Lake area, and Brice Prairie to the north.",
+        "The floors we coat in Onalaska are garage floor coatings, basement epoxy, patio and outdoor concrete, and commercial floors. A larger attached garage and a smaller utility space can need different prep, so photos of the slab help the estimate.",
+        "Holmen is the next town north, La Crosse is south, and West Salem is east on the way back to Sparta. All three are a short drive from Onalaska, and each has its own page.",
+      ],
+      faq: [
+        {
+          q: "How far is Onalaska from Sparta?",
+          a: "Onalaska is about 25 miles west of Sparta, between West Salem and La Crosse.",
+        },
+        {
+          q: "Do you coat garages and basements in Onalaska?",
+          a: "Yes. Garage floor coatings and basement epoxy are both services we install in Onalaska, along with patio, outdoor, and commercial concrete coatings.",
+        },
+        {
+          q: "Which nearby cities have their own pages?",
+          a: "Holmen is north of Onalaska, La Crosse is south, and West Salem is east toward Sparta.",
+        },
+        {
+          q: "What should I include with an Onalaska estimate request?",
+          a: "Floor dimensions and photos of tire marks, stains, or existing paint help. Also say whether the garage is heated and when you need to park on the floor again.",
+        },
+      ],
+      nearby: ["holmen", "la-crosse", "west-salem"],
       imageSrc: undefined as string | undefined,
       neighborhoods: [] as string[],
       localConditions: [
@@ -369,11 +451,35 @@ export const siteConfig = {
       slug: "holmen",
       name: "Holmen",
       state: "WI",
-      h1: "Epoxy Flooring & Garage Floor Coatings in Holmen, WI",
+      h1: "Epoxy Floor Coatings in Holmen, WI",
       metaDescription:
-        "Discuss garage, basement, patio and shop floor coatings in Holmen, WI with Fusion Floors. Explore epoxy finishes and request a free estimate for your concrete.",
+        "Epoxy floor coatings in Holmen, WI, about 30 miles west of Sparta. Garage, basement, patio, and shop floors in the La Crosse area. Request a free estimate.",
       blurb:
-        "Fusion Floors serves Holmen with durable concrete coatings for garages, basements, patios, outdoor spaces, shops, and commercial floors.",
+        "Fusion Floors serves Holmen, about 30 miles west of Sparta, with coatings for garages, basements, patios, outdoor spaces, shops, and commercial floors.",
+      body: [
+        "Holmen is about 30 miles west of Sparta, north of Onalaska in the La Crosse area. The village sits along Halfway Creek, with Onalaska and Brice Prairie to the south and La Crosse a short drive farther south.",
+        "In Holmen we coat garages, basements, patios, walkways, and shop or commercial concrete. If a project includes both an indoor floor and outdoor concrete, list each surface. They can need different prep and a different coating.",
+        "The drive from Sparta is west on I-90 toward the La Crosse area, then north into Holmen. West Salem and Onalaska are on that same corridor, closer to the interstate.",
+      ],
+      faq: [
+        {
+          q: "How far is Holmen from Sparta?",
+          a: "Holmen is about 30 miles west of Sparta, north of Onalaska in the La Crosse area.",
+        },
+        {
+          q: "What concrete do you coat in Holmen?",
+          a: "Garages, basements, patios, walkways, and shop or commercial floors. List indoor and outdoor concrete separately when both are part of the project.",
+        },
+        {
+          q: "Which neighboring cities do you also serve?",
+          a: "Onalaska and La Crosse are the closest published service areas. West Salem and Sparta are back east on I-90.",
+        },
+        {
+          q: "What should a Holmen garage estimate mention about winter?",
+          a: "Tell us about road salt, slush, and whether the garage is heated. Those details are part of choosing a finish.",
+        },
+      ],
+      nearby: ["onalaska", "la-crosse", "west-salem"],
       imageSrc: undefined as string | undefined,
       neighborhoods: [] as string[],
       localConditions: [
@@ -388,11 +494,35 @@ export const siteConfig = {
       slug: "tomah",
       name: "Tomah",
       state: "WI",
-      h1: "Epoxy Flooring & Garage Floor Coatings in Tomah, WI",
+      h1: "Epoxy Floor Coatings in Tomah, WI",
       metaDescription:
-        "Garage and commercial epoxy flooring in Tomah, WI from Sparta-based Fusion Floors. Discuss shop floors, basement coatings or outdoor concrete and get a free estimate.",
+        "Epoxy floor coatings in Tomah, WI, about 20 miles east of Sparta on I-90. Garage, basement, patio, and commercial floors. Free estimates from Fusion Floors.",
       blurb:
-        "Fusion Floors installs coatings in Tomah for garages, patios, outdoor spaces, shops, and commercial floors from our base in Sparta.",
+        "Fusion Floors installs coatings in Tomah, about 20 miles east of Sparta, for garages, basements, patios, outdoor spaces, shops, and commercial floors.",
+      body: [
+        "Tomah is about 20 miles east of Sparta on I-90, near where I-90 and I-94 meet. Fort McCoy lies between Tomah and Sparta. Oakdale is farther east on I-90, and Warrens is north of town.",
+        "Projects in Tomah include garage floors, basement coatings, patio and outdoor concrete, and commercial or shop floors. For a shop or retail floor, include the type of traffic, any equipment or spills, and how long the space can be out of use.",
+        "Sparta is the next published service area to the west. West Salem, Onalaska, Holmen, and La Crosse continue west along I-90 if the floor is on that side of the region.",
+      ],
+      faq: [
+        {
+          q: "How far is Tomah from Sparta?",
+          a: "Tomah is about 20 miles east of Sparta on I-90.",
+        },
+        {
+          q: "Do you coat commercial floors in Tomah?",
+          a: "Yes. Commercial epoxy is one of the services available in Tomah, along with garage, basement, patio, and outdoor coatings. Include traffic, equipment, and any downtime limits with the request.",
+        },
+        {
+          q: "Which city pages are west of Tomah?",
+          a: "Sparta is about 20 miles west. Farther west on I-90 are West Salem, then Onalaska, Holmen, and La Crosse.",
+        },
+        {
+          q: "Can one Tomah estimate cover a garage and a basement?",
+          a: "Yes. Describe each area and send photos. A residential request can include the garage, the basement, and outdoor concrete.",
+        },
+      ],
+      nearby: ["sparta", "west-salem"],
       imageSrc: undefined as string | undefined,
       neighborhoods: [] as string[],
       localConditions: [
@@ -407,11 +537,35 @@ export const siteConfig = {
       slug: "west-salem",
       name: "West Salem",
       state: "WI",
-      h1: "Epoxy Flooring & Garage Floor Coatings in West Salem, WI",
+      h1: "Epoxy Floor Coatings in West Salem, WI",
       metaDescription:
-        "Residential garage floor coatings, basement epoxy and outdoor concrete coatings in West Salem, WI. Contact Fusion Floors to discuss your floor and get a free estimate.",
+        "Epoxy floor coatings in West Salem, WI, about 15 miles west of Sparta on I-90. Garage, basement, patio, and outbuilding coatings. Free estimates.",
       blurb:
-        "Fusion Floors serves West Salem with coatings for garages, basements, patios, outdoor spaces, shops, and outbuildings — a short drive west of Sparta on I-90.",
+        "Fusion Floors serves West Salem, about 15 miles west of Sparta on I-90, with coatings for garages, basements, patios, outdoor spaces, shops, and outbuildings.",
+      body: [
+        "West Salem is about 15 miles west of Sparta on I-90, between Sparta and the La Crosse area. Bangor is the next community east, back toward Sparta. Lake Neshonoc is on the west side of the village, with La Crosse and Onalaska farther west.",
+        "Floors we coat in West Salem include garages, workshops, and outbuildings, plus basements, patios, and exterior steps. Say what uses the floor — cars, tools, storage, or other equipment — and whether the space is heated.",
+        "From West Salem, Sparta is about 15 miles east on I-90. La Crosse, Onalaska, and Holmen are west and north. Each of those cities has its own page.",
+      ],
+      faq: [
+        {
+          q: "How far is West Salem from Sparta?",
+          a: "West Salem is about 15 miles west of Sparta on I-90.",
+        },
+        {
+          q: "What do you install in West Salem?",
+          a: "Coatings for garages, basements, patios, outdoor steps, shops, and outbuildings.",
+        },
+        {
+          q: "Is West Salem between Sparta and La Crosse?",
+          a: "Yes. West Salem is on I-90 between Sparta to the east and La Crosse, Onalaska, and Holmen to the west.",
+        },
+        {
+          q: "What should I mention about an unheated garage or outbuilding?",
+          a: "Say if the space is unheated and whether paint or a sealer is already on the concrete. Slab condition and temperature affect prep and when the coating can be installed.",
+        },
+      ],
+      nearby: ["sparta", "la-crosse", "onalaska"],
       imageSrc: undefined as string | undefined,
       neighborhoods: [] as string[],
       localConditions: [
@@ -580,8 +734,12 @@ export const siteConfig = {
     { label: "Services", href: "/services" },
     { label: "Locations", href: "/locations" },
     { label: "Work", href: "/work" },
+    { label: "Blog", href: "/blog" },
     { label: "Contact", href: "/contact" },
   ],
+
+  // Real posts only. An empty list keeps /blog out of the sitemap.
+  posts: [] as BlogPost[],
 
   ghl: {
     chatWidgetId: "",

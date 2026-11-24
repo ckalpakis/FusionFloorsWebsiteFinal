@@ -31,7 +31,7 @@ def request(path, headers=None):
  return r.code, {k.lower(): v for k, v in r.headers.items()}, r.read().decode()
 class Page(HTMLParser):
  def __init__(self, text):
-  super().__init__(); self.title=''; self.h1=[]; self.canon=[]; self.meta={}; self.links=[]; self.images=[]; self.schema=[]; self.ids=set(); self.mode=None; self.buf=''; self.feed(text)
+  super().__init__(); self.title=''; self.h1=[]; self.canon=[]; self.meta={}; self.links=[]; self.images=[]; self.schema=[]; self.ids=set(); self.mode=None; self.buf=''; self.skip=0; self.visible=[]; self.feed(text)
  def handle_starttag(self, tag, attrs):
   a=dict(attrs)
   if a.get('id'): self.ids.add(a['id'])
@@ -39,15 +39,21 @@ class Page(HTMLParser):
   if tag=='meta': self.meta[a.get('name',a.get('property'))]=a.get('content')
   if tag=='a' and a.get('href'): self.links.append(a['href'])
   if tag=='img': self.images.append(a)
-  if tag in ['title','h1'] or (tag=='script' and a.get('type')=='application/ld+json'): self.mode=tag; self.buf=''
+  if tag in ['script','style']: self.skip+=1
+  if self.skip==0 and (tag in ['title','h1'] or (tag=='script' and a.get('type')=='application/ld+json')): self.mode=tag; self.buf=''
+  if tag=='script' and a.get('type')=='application/ld+json': self.mode=tag; self.buf=''
  def handle_data(self, data):
-  if self.mode: self.buf+=data
+  if self.mode in ['title','h1','script']: self.buf+=data
+  elif self.skip==0 and data.strip(): self.visible.append(data)
  def handle_endtag(self, tag):
+  if tag in ['script','style'] and self.skip: self.skip-=1
   if tag!=self.mode: return
   if tag=='title': self.title=self.buf
   if tag=='h1': self.h1.append(' '.join(self.buf.split()))
   if tag=='script': self.schema.append(json.loads(self.buf))
   self.mode=None
+ def text(self):
+  return ' '.join(self.visible)
 
 def check_page(path):
  status,headers,html=request(path); assert status==200,(path,status)
@@ -64,9 +70,15 @@ def check_page(path):
  for schema in p.schema:
   assert schema.get('@context')=='https://schema.org'
   if schema['@type']=='HomeAndConstructionBusiness':
-   assert not any(k in schema for k in ['geo','aggregateRating','priceRange','address']),schema
+   assert not any(k in schema for k in ['geo','aggregateRating','priceRange','address','openingHours','openingHoursSpecification']),schema
   if schema['@type']=='BreadcrumbList':
    assert [x['position'] for x in schema['itemListElement']]==list(range(1,len(schema['itemListElement'])+1))
+   assert all(isinstance(x.get('name'), str) and x['name'].strip() for x in schema['itemListElement']), schema
+  if schema['@type']=='FAQPage':
+   visible=p.text()
+   for question in schema['mainEntity']:
+    assert question['name'] in visible, (path, question['name'])
+    assert question['acceptedAnswer']['text'] in visible, (path, question['name'])
  for img in p.images:
   assert 'alt' in img,(path,img)
   assert (img.get('width') and img.get('height')) or img.get('data-nimg')=='fill',(path,img)
@@ -77,19 +89,51 @@ status,_,xml=request('/sitemap.xml'); assert status==200
 urls=[el.text for el in ET.fromstring(xml).findall('{*}url/{*}loc')]
 assert len(urls)==len(set(urls))==len(EXPECTED),urls
 assert set(urls)=={CANONICAL+p for p in EXPECTED},urls
+for url in urls:
+ assert url.startswith('https://www.fusionfloorswi.com'), url
+ path=url[len(CANONICAL):] or '/'
+ parts=[part for part in path.split('/') if part]
+ if parts[:1]==['services']: assert len(parts)<=2, path
+ assert path not in LEGACY, path
 status,_,robots=request('/robots.txt'); assert status==200 and f'Sitemap: {CANONICAL}/sitemap.xml' in robots
 assert 'Disallow: /\n' not in robots and 'Disallow: /_next' not in robots
 with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool: pages=dict(pool.map(check_page,EXPECTED))
 assert len({p.title for p in pages.values()})==len(pages),'Duplicate title'
 assert len({p.meta['description'] for p in pages.values()})==len(pages),'Duplicate description'
-# Every internal page link must point directly to an indexable page or valid fragment.
-for path,p in pages.items():
+CITY_NAMES={'sparta':'Sparta','la-crosse':'La Crosse','onalaska':'Onalaska','holmen':'Holmen','tomah':'Tomah','west-salem':'West Salem'}
+for slug,name in CITY_NAMES.items():
+ path=f'/locations/{slug}'
+ expected=f'Epoxy Floor Coatings in {name}, WI'
+ assert pages[path].h1==[expected],(path,pages[path].h1)
+ assert pages[path].title==expected+' | Fusion Floors',pages[path].title
+ service_links=[href for href in pages[path].links if href.startswith('/services/')]
+ neighbor_links=[href for href in pages[path].links if href.startswith('/locations/') and href!=path]
+ assert len(service_links)>=4,(path,service_links)
+ assert len(neighbor_links)>=2,(path,neighbor_links)
+home=pages['/']
+assert 'Western Wisconsin' in home.h1[0] and 'La Crosse' in home.h1[0], home.h1
+assert 'Sparta' not in home.h1[0] and 'Sparta' not in home.title, (home.h1, home.title)
+for slug in CITIES: assert f'/locations/{slug}' in home.links, slug
+assert 'Western Wisconsin' in pages['/about'].h1[0]
+assert pages['/services'].h1[0]=='Epoxy Flooring & Concrete Coating Services'
+assert pages['/locations'].h1[0]=='Epoxy Flooring Service Areas in Western Wisconsin'
+assert 'Projects' in pages['/work'].h1[0] and 'Reviews' in pages['/work'].h1[0]
+blog_status,_,blog_html=request('/blog'); assert blog_status==200, blog_status
+blog=Page(blog_html)
+assert len(blog.h1)==1 and 'No posts yet.' in blog.text(), blog.h1
+assert '/blog' not in [url[len(CANONICAL):] for url in urls]
+assert 'noindex' in blog.meta.get('robots',''), blog.meta
+# Every internal page link must point directly to an indexable page, the empty blog, or a valid fragment.
+allowed=set(pages)|{'/blog'}
+for path,p in list(pages.items())+[('/blog',blog)]:
  for href in p.links:
   url=urllib.parse.urlsplit(urllib.parse.urljoin(CANONICAL+path,href))
   if url.hostname not in ['fusionfloorswi.com','www.fusionfloorswi.com']: continue
   assert url.scheme=='https' and url.netloc=='www.fusionfloorswi.com',(path,href)
-  assert url.path in pages,(path,href)
-  if url.fragment: assert url.fragment in pages[url.path].ids,(path,href)
+  assert url.path in allowed or url.path.startswith('/blog/'),(path,href)
+  if url.fragment:
+   target = pages.get(url.path) if url.path != '/blog' else blog
+   assert target and url.fragment in target.ids,(path,href)
 # Follow every direct destination to ensure no second redirect / loop.
 for old,new in LEGACY.items():
  for source in [old,old+'/',old.upper()+'/']:

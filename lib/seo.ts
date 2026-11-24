@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { siteConfig, ServiceEntry } from "@/config/site.config";
 import { canonicalUrl } from "@/lib/urls";
 
-export function pageMetadata({ title, description, path, image = siteConfig.hero.posterSrc }: {
-  title: string; description: string; path: string; image?: string;
+export function pageMetadata({ title, description, path, image = siteConfig.hero.posterSrc, index = true }: {
+  title: string; description: string; path: string; image?: string; index?: boolean;
 }): Metadata {
   const fullTitle = `${title} | ${siteConfig.business.name}`;
   const url = canonicalUrl(path);
@@ -14,7 +14,7 @@ export function pageMetadata({ title, description, path, image = siteConfig.hero
     title: { absolute: fullTitle },
     description,
     alternates: { canonical: url },
-    robots: { index: true, follow: true },
+    robots: { index, follow: true },
     openGraph: {
       type: "website", siteName: siteConfig.business.name,
       title: fullTitle, description, url,
