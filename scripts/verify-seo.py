@@ -13,7 +13,8 @@ ORIGIN = sys.argv[1] if len(sys.argv) > 1 else 'http://localhost:3000'
 CANONICAL = 'https://www.fusionfloorswi.com'
 SERVICES = ['garage-floor-epoxy', 'basement-epoxy', 'commercial-epoxy', 'patio-outdoor-coatings']
 CITIES = ['sparta', 'la-crosse', 'onalaska', 'west-salem', 'holmen', 'tomah']
-EXPECTED = ['/', '/about', '/contact', '/work', '/services', '/locations'] + ['/services/'+s for s in SERVICES] + ['/locations/'+c for c in CITIES]
+POST = '/blog/epoxy-garage-floors-western-wisconsin-winters'
+EXPECTED = ['/', '/about', '/contact', '/work', '/services', '/locations', '/blog', POST] + ['/services/'+s for s in SERVICES] + ['/locations/'+c for c in CITIES]
 LEGACY = {
  '/service-garage-floors': '/services/garage-floor-epoxy',
  '/service-basement-floors': '/services/basement-epoxy',
@@ -118,21 +119,34 @@ assert 'Western Wisconsin' in pages['/about'].h1[0]
 assert pages['/services'].h1[0]=='Epoxy Flooring & Concrete Coating Services'
 assert pages['/locations'].h1[0]=='Epoxy Flooring Service Areas in Western Wisconsin'
 assert 'Projects' in pages['/work'].h1[0] and 'Reviews' in pages['/work'].h1[0]
-blog_status,_,blog_html=request('/blog'); assert blog_status==200, blog_status
-blog=Page(blog_html)
-assert len(blog.h1)==1 and 'No posts yet.' in blog.text(), blog.h1
-assert '/blog' not in [url[len(CANONICAL):] for url in urls]
-assert 'noindex' in blog.meta.get('robots',''), blog.meta
-# Every internal page link must point directly to an indexable page, the empty blog, or a valid fragment.
-allowed=set(pages)|{'/blog'}
-for path,p in list(pages.items())+[('/blog',blog)]:
+blog=pages['/blog']
+assert 'No posts yet.' not in blog.text()
+assert POST in blog.links, blog.links
+assert 'November 24, 2026' in blog.text()
+post=pages[POST]
+articles=[x for x in post.schema if x.get('@type')=='Article']
+assert len(articles)==1, post.schema
+article=articles[0]
+business=next(x for x in post.schema if x.get('@type')=='HomeAndConstructionBusiness')
+assert article['headline']==post.h1[0], article
+assert article['datePublished']=='2026-11-24', article
+assert article.get('dateModified')=='2026-11-24', article
+assert article['author']=={'@type':'Organization','name':business['name'],'url':CANONICAL+'/'}, article['author']
+assert article['publisher']=={'@id':business['@id']}, (article['publisher'], business['@id'])
+assert business['@id']==CANONICAL+'/#business'
+assert 'salt and gravel tracked in all winter' in post.text()
+for href in ['/services/garage-floor-epoxy','/contact']+[f'/locations/{c}' for c in CITIES]:
+ assert href in post.links,(POST,href)
+# Every internal page link must point directly to an indexable page, a blog post, or a valid fragment.
+allowed=set(pages)
+for path,p in pages.items():
  for href in p.links:
   url=urllib.parse.urlsplit(urllib.parse.urljoin(CANONICAL+path,href))
   if url.hostname not in ['fusionfloorswi.com','www.fusionfloorswi.com']: continue
   assert url.scheme=='https' and url.netloc=='www.fusionfloorswi.com',(path,href)
   assert url.path in allowed or url.path.startswith('/blog/'),(path,href)
   if url.fragment:
-   target = pages.get(url.path) if url.path != '/blog' else blog
+   target = pages.get(url.path)
    assert target and url.fragment in target.ids,(path,href)
 # Follow every direct destination to ensure no second redirect / loop.
 for old,new in LEGACY.items():
