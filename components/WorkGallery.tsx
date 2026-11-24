@@ -11,12 +11,14 @@ const HOME_LIMIT = 8;
 export default function WorkGallery({
   headingLevel = "h2",
   variant = "scroll",
+  heading = "Our work.",
 }: {
   headingLevel?: "h1" | "h2";
   // "scroll": homepage — capped at 8 images, horizontal scroll strip with
   // a sliding progress indicator, links out to the full portfolio.
   // "grid": /work page — every gallery image, full-width grid, no cap.
   variant?: "scroll" | "grid";
+  heading?: string;
 }) {
   const Heading = headingLevel;
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -25,6 +27,9 @@ export default function WorkGallery({
   const [thumb, setThumb] = useState({ left: 0, width: 100 });
 
   const items = variant === "scroll" ? siteConfig.gallery.slice(0, HOME_LIMIT) : siteConfig.gallery;
+  const headingWords = heading.trim().split(/\s+/);
+  const headingTail = headingWords[headingWords.length - 1] ?? heading;
+  const headingLead = headingWords.slice(0, -1).join(" ");
 
   function updateThumb() {
     const el = scrollRef.current;
@@ -92,7 +97,7 @@ export default function WorkGallery({
               Recent work
             </p>
             <Heading className="font-display uppercase text-4xl md:text-6xl leading-none mt-3">
-              Our <span className="text-accent">work.</span>
+              {headingLead} <span className="text-accent">{headingTail}</span>
             </Heading>
           </div>
           {variant === "scroll" && (

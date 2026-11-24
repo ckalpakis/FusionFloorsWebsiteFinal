@@ -5,10 +5,15 @@ import { serviceAlt } from "@/lib/seo";
 
 export default function ServicesGrid({
   headingLevel = "h2",
+  heading = "What we do.",
 }: {
   headingLevel?: "h1" | "h2";
+  heading?: string;
 }) {
   const Heading = headingLevel;
+  const headingWords = heading.trim().split(/\s+/);
+  const headingTail = headingWords[headingWords.length - 1] ?? heading;
+  const headingLead = headingWords.slice(0, -1).join(" ");
   return (
     <section className="px-6 py-20 md:py-28 bg-ink text-paper">
       <div className="max-w-6xl mx-auto">
@@ -21,7 +26,7 @@ export default function ServicesGrid({
             Services
           </p>
           <Heading className="font-display uppercase text-4xl md:text-6xl leading-none mt-3">
-            What we <span className="text-accent">do.</span>
+            {headingLead} <span className="text-accent">{headingTail}</span>
           </Heading>
         </div>
 

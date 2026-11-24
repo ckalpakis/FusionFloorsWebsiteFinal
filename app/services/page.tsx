@@ -27,7 +27,10 @@ export default function ServicesPage() {
           <span className="text-paper">Services</span>
         </div>
       </nav>
-      <ServicesGrid headingLevel="h1" />
+      <ServicesGrid
+        headingLevel="h1"
+        heading="Epoxy Flooring & Concrete Coating Services"
+      />
       <MidPageCTA
         heading="Don't see exactly what you need?"
         subhead="Tell us about the project — free estimates, no pressure."

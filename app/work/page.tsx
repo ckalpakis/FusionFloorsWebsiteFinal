@@ -29,7 +29,11 @@ export default function WorkPage() {
           <span className="text-paper">Work</span>
         </div>
       </nav>
-      <WorkGallery headingLevel="h1" variant="grid" />
+      <WorkGallery
+        headingLevel="h1"
+        variant="grid"
+        heading="Epoxy & Concrete Coating Projects and Reviews"
+      />
       <Reviews />
       {/* This page used to end on the last photo with nothing to do next
           — someone who scrolled a full portfolio and liked what they saw

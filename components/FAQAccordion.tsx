@@ -73,11 +73,9 @@ export default function FAQAccordion({
                     {isOpen ? "×" : "+"}
                   </span>
                 </button>
-                {isOpen && (
-                  <p className="pb-4 px-3 pl-[3.25rem] text-paper/70 text-sm max-w-xl">
-                    {item.a}
-                  </p>
-                )}
+                <p className={`pb-4 px-3 pl-[3.25rem] text-paper/70 text-sm max-w-xl ${isOpen ? "" : "hidden"}`}>
+                  {item.a}
+                </p>
               </div>
             );
           })}

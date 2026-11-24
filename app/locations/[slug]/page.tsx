@@ -8,7 +8,7 @@ import MidPageCTA from "@/components/MidPageCTA";
 import StickyMobileCTA from "@/components/StickyMobileCTA";
 import QuoteForm from "@/components/QuoteForm";
 import { siteConfig } from "@/config/site.config";
-import { locationServiceSchema, breadcrumbSchema } from "@/lib/schema";
+import { locationServiceSchema, breadcrumbSchema, faqSchema } from "@/lib/schema";
 
 export const dynamicParams = false;
 
@@ -45,10 +45,15 @@ export default async function LocationPage({
   if (!location) notFound();
   const { business, hero } = siteConfig;
   const bannerImage = location.imageSrc ?? hero.posterSrc;
+  const neighbors = location.nearby.flatMap((nearbySlug) => {
+    const match = siteConfig.locations.find((entry) => entry.slug === nearbySlug);
+    return match ? [match] : [];
+  });
 
   return (
     <>
       <JsonLd data={locationServiceSchema(location)} />
+      {location.faq.length > 0 && <JsonLd data={faqSchema(location.faq)} />}
       <JsonLd
         data={breadcrumbSchema([
           { name: "Home", url: siteConfig.siteUrl },
@@ -114,6 +119,16 @@ export default async function LocationPage({
           </div>
         </div>
       </section>
+
+      {location.body.length > 0 && (
+        <section className="px-6 py-16 max-w-4xl mx-auto">
+          <div className="max-w-2xl space-y-4 text-ink/80">
+            {location.body.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Neighborhoods + recent project — light section */}
       {(location.neighborhoods.length > 0 || location.recentProject || location.testimonial) && <section className="px-6 py-16 max-w-4xl mx-auto">
@@ -195,6 +210,42 @@ export default async function LocationPage({
             ))}
           </ul>
         </div>
+
+        {neighbors.length > 0 && (
+          <div className="mt-12">
+            <h2 className="font-display text-xl font-semibold">
+              Nearby city pages
+            </h2>
+            <ul className="mt-4 flex flex-wrap gap-2 text-sm">
+              {neighbors.map((neighbor) => (
+                <li key={neighbor.slug}>
+                  <Link
+                    href={`/locations/${neighbor.slug}`}
+                    className="inline-block border border-ink/15 rounded-full px-4 py-2 hover:border-accent-ink hover:text-accent-ink transition-colors"
+                  >
+                    Epoxy floor coatings in {neighbor.name}, {neighbor.state}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {location.faq.length > 0 && (
+          <div className="mt-16 max-w-2xl">
+            <h2 className="font-display text-xl font-semibold">
+              Questions about epoxy floor coatings in {location.name}
+            </h2>
+            <div className="mt-4 space-y-6">
+              {location.faq.map((item) => (
+                <div key={item.q}>
+                  <p className="font-medium">{item.q}</p>
+                  <p className="mt-1 text-sm text-ink/70">{item.a}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </section>
 
       <QuoteForm headingLevel="h2" width="narrow" />

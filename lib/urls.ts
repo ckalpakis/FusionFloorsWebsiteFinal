@@ -1,4 +1,5 @@
 import { siteConfig } from "@/config/site.config";
+import { BlogPosts } from "@/lib/blog";
 
 export const SITE_URL = siteConfig.siteUrl;
 
@@ -12,7 +13,11 @@ export const indexablePaths = [
   "/", "/about", "/services", "/locations", "/work", "/contact",
   ...siteConfig.services.map((s) => `/services/${s.slug}`),
   ...siteConfig.locations.map((l) => `/locations/${l.slug}`),
+  ...BlogPosts.indexablePaths(),
 ];
+
+/** Routes that exist even when noindex, so case and trailing slashes still collapse. */
+const routablePaths = new Set([...indexablePaths, "/blog"]);
 
 // The retired combo pages repeated the service copy and the city's generic
 // conditions. Their service parent contains the same information and CTAs.
@@ -33,7 +38,7 @@ export const redirectMap: Record<string, string> = {
 export function seoRedirect(url: URL, host: string, protocol: string): URL | null {
   const normalized = url.pathname.toLowerCase().replace(/\/+$/, "") || "/";
   const replacement = redirectMap[normalized];
-  const knownPath = indexablePaths.includes(normalized) || normalized === "/sitemap.xml" || normalized === "/robots.txt";
+  const knownPath = routablePaths.has(normalized) || normalized === "/sitemap.xml" || normalized === "/robots.txt";
   const target = replacement ?? (knownPath ? normalized : url.pathname);
   const productionHost = /^(www\.)?fusionfloorswi\.com$/i.test(host);
   const wrongOrigin = productionHost && (host !== "www.fusionfloorswi.com" || protocol !== "https");

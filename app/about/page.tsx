@@ -8,7 +8,7 @@ import { breadcrumbSchema } from "@/lib/schema";
 import { siteConfig } from "@/config/site.config";
 
 export const metadata = pageMetadata({
-  title: "About Fusion Floors in Sparta, WI",
+  title: "About Fusion Floors in Western Wisconsin",
   description: "Meet Fusion Floors, based in Sparta and serving Western Wisconsin with epoxy flooring and concrete coatings for homes and businesses.",
   path: "/about",
 });
@@ -44,7 +44,7 @@ export default function AboutPage() {
             About
           </p>
           <h1 className="font-display uppercase text-4xl md:text-6xl leading-none mt-3">
-            {business.name}
+            About {business.name} in <span className="text-accent">Western Wisconsin</span>
           </h1>
           <p className="mt-5 max-w-xl text-paper/85">{business.tagline}</p>
 

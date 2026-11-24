@@ -33,7 +33,7 @@ export default function LocationsPage() {
           Service areas
         </p>
         <h1 className="font-display uppercase text-4xl md:text-5xl mt-3 leading-none">
-          Where we <span className="text-accent-ink">work.</span>
+          Epoxy Flooring Service Areas in <span className="text-accent-ink">Western Wisconsin</span>
         </h1>
         <p className="mt-4 text-ink/70 max-w-xl">
           {siteConfig.business.name} serves the following towns across{" "}
