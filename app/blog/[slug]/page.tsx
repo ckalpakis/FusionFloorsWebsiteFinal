@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -6,6 +7,30 @@ import { articleSchema, breadcrumbSchema } from "@/lib/schema";
 import { pageMetadata } from "@/lib/seo";
 import { siteConfig } from "@/config/site.config";
 import { BlogPosts } from "@/lib/blog";
+
+// Posts are plain paragraphs. A [label](/path) span becomes an internal link.
+function Paragraph({ text }: { text: string }) {
+  const pattern = /\[([^\]]+)\]\((\/[^)\s]*)\)/g;
+  const nodes: ReactNode[] = [];
+  let cursor = 0;
+  let match: RegExpExecArray | null;
+  while ((match = pattern.exec(text)) !== null) {
+    if (match.index > cursor) nodes.push(text.slice(cursor, match.index));
+    const href = match[2];
+    nodes.push(
+      <Link
+        key={`${match.index}-${href}`}
+        href={href}
+        className="text-accent-ink underline underline-offset-2 hover:text-ink"
+      >
+        {match[1]}
+      </Link>,
+    );
+    cursor = match.index + match[0].length;
+  }
+  if (cursor < text.length) nodes.push(text.slice(cursor));
+  return <p>{nodes}</p>;
+}
 
 export const dynamicParams = false;
 
@@ -61,7 +86,7 @@ export default async function BlogPostPage({
         </h1>
         <div className="mt-8 max-w-2xl space-y-4 text-ink/80">
           {post.paragraphs.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
+            <Paragraph key={paragraph} text={paragraph} />
           ))}
         </div>
       </article>
